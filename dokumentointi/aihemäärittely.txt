@@ -1,0 +1,8 @@
+Aihe: Yksinkertainen point-and-click adventurepeli (Ensimmäisen persoonan kuvakulmasta Myst-pelien tyyliin)
+
+Tarkoituksena luoda lyhyt peli, jossa mahdollista liikkua ruuduittain ja tutkia ympäristöä.
+
+Tavoitteena ainakin:
+- mahdollisuus katsella ympärilleen (ruudussa voi kääntyä ja nähdä eri näkymiä (kuvia), mahdollisesti kääntyminen sekä näppäimistöllä että hiirellä)
+- luoda jonkinnäköistä interaktiivista tapahtumista pelaajan ja pelimaailman välillä (esineiden tai jonkin objektin käyttäminen)
+- ehkä mahdollisuus tallentaa pelitilanne
