@@ -1,18 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author hkskogbe
- */
+import Kayttoliittyma.Kayttoliittyma;
+import Sovelluslogiikka.Lataaja;
+import javax.swing.SwingUtilities;
+
+
 public class main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Lataaja lataaja = new Lataaja();
+        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lataaja);
+        SwingUtilities.invokeLater(kayttoliittyma);
+        
     }
 }
