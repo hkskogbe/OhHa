@@ -1,6 +1,6 @@
 
 import Kayttoliittyma.Kayttoliittyma;
-import Sovelluslogiikka.Lataaja;
+import Sovelluslogiikka.Tiedot;
 import javax.swing.SwingUtilities;
 
 
@@ -8,7 +8,7 @@ public class main {
 
     public static void main(String[] args) {
         
-        Lataaja lataaja = new Lataaja();
+        Tiedot lataaja = new Tiedot();
         
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lataaja);
         SwingUtilities.invokeLater(kayttoliittyma);

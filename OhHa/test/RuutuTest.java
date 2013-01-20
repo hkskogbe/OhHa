@@ -32,10 +32,10 @@ public class RuutuTest {
 
     @Before
     public void setUp() {
-        A = new Nakyma((new ImageIcon().getImage()), true);
-        B = new Nakyma((new ImageIcon().getImage()), true);
-        C = new Nakyma((new ImageIcon().getImage()), true);
-        D = new Nakyma((new ImageIcon().getImage()), true);
+        A = new Nakyma((new ImageIcon()), true);
+        B = new Nakyma((new ImageIcon()), true);
+        C = new Nakyma((new ImageIcon()), true);
+        D = new Nakyma((new ImageIcon()), true);
         ruutu = new Ruutu(A, B, C, D);
     }
 

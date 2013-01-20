@@ -2,18 +2,23 @@
 package Sovelluslogiikka.Ruudut;
 
 import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class Nakyma {
     
     private boolean kaytettava;
-    private Image kuva;
+    private ImageIcon kuva;
     
-    public Nakyma(Image kuva, boolean kaytettava) {
+    public Nakyma(ImageIcon kuva, boolean kaytettava) {
         this.kaytettava = kaytettava;
         this.kuva = kuva;
     }
     
     public Image getKuva() {
+        return this.kuva.getImage();
+    }
+    public Icon getIcon() {
         return this.kuva;
     }
     public void setKaytettava(boolean kaytettava) {

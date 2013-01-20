@@ -1,17 +1,22 @@
 package Kayttoliittyma;
 
-import Sovelluslogiikka.Lataaja;
+import Sovelluslogiikka.Suunta;
+import Sovelluslogiikka.Tiedot;
+import java.awt.CardLayout;
 import java.awt.Dimension;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Lataaja lataaja;
+    private Tiedot tiedot;
 
-    public Kayttoliittyma(Lataaja lataaja) {
-        this.lataaja = lataaja;
+    public Kayttoliittyma(Tiedot tiedot) {
+        this.tiedot = tiedot;
     }
 
     @Override
@@ -22,13 +27,21 @@ public class Kayttoliittyma implements Runnable {
 
         this.lataaPeli();
 
-        this.frame.addKeyListener(new NappisKuuntelija());
+        this.frame.addKeyListener(new NappisKuuntelija(this));
         
         frame.pack();
         frame.setVisible(true);
     }
 
     public void lataaPeli() {
-        this.lataaja.lataa(frame);
+        this.tiedot.lataa(frame.getContentPane());
+    }
+    
+    public void kaanny(boolean oikea) {
+        tiedot.kaanny(oikea);
+    }
+    
+    public void liikuEteenpain() {
+        this.tiedot.seuraavaRuutu();
     }
 }
