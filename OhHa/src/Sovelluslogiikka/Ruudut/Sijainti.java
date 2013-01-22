@@ -6,4 +6,5 @@ public interface Sijainti {
 
     public Sijainti liiku(Suunta suunta);
     public Ruutu getRuutu();
+    
 }

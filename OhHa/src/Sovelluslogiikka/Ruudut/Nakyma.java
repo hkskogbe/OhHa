@@ -39,5 +39,4 @@ public class Nakyma {
     public String getTeksti() {
         return this.teksti;
     }
-    // näkymäclassin tehtävänä omistaa taustakuva ja tiedot siitä, miten näkymän kanssa voi toimia
 }

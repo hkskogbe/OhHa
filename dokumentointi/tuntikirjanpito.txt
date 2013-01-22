@@ -9,5 +9,7 @@ Pari tuntia luokkien suunnitteluun ja ohjelmoinnin aloittamiseen (pohdin samalla
 20.1.
 Muutamia tunteja (3-5) koodailua
 
+22.1.
+1-2 tuntia 
 
 
