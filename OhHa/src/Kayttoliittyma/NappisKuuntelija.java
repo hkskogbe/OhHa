@@ -24,6 +24,9 @@ public class NappisKuuntelija implements KeyListener{
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             kayttis.kaanny(false);
         }
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            kayttis.liikuEteenpain();
+        }
     }
 
     @Override

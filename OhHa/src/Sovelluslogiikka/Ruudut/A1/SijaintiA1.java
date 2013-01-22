@@ -1,5 +1,6 @@
 package Sovelluslogiikka.Ruudut.A1;
 
+import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
@@ -23,12 +24,15 @@ public class SijaintiA1 implements Sijainti {
     @Override
     public Sijainti liiku(Suunta suunta) {
         if (suunta == Suunta.POHJOINEN) {
-            return null;
+            return new SijaintiA2();
         } else if (suunta == Suunta.ITA) {
+            System.out.println("You hit your head on an invisible wall.");
             return null;
         } else if (suunta == Suunta.ETELA) {
+            System.out.println("You hit your head on an invisible wall.");
             return null;
         } else {
+            System.out.println("You hit your head on an invisible wall.");
             return null;
         }
     }

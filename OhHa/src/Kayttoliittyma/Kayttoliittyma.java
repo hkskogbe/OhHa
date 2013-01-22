@@ -2,9 +2,14 @@ package Kayttoliittyma;
 
 import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tiedot;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +18,7 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
+    private Container container;
     private Tiedot tiedot;
 
     public Kayttoliittyma(Tiedot tiedot) {
@@ -34,7 +40,13 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void lataaPeli() {
-        this.tiedot.lataa(frame.getContentPane());
+        this.container = frame.getContentPane();
+        
+        JPanel panel = new JPanel();
+        
+        this.container.add(panel);
+
+        this.tiedot.lataa(panel);
     }
     
     public void kaanny(boolean oikea) {
