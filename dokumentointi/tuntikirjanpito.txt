@@ -12,4 +12,9 @@ Muutamia tunteja (3-5) koodailua
 22.1.
 1-2 tuntia 
 
+25.1.
+2 tuntia ohjelman rakenteen sekä actionlistenerien sun muun suunnittelussa ja ohjelmoinnissa
+
+
+
 

@@ -40,13 +40,13 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void lataaPeli() {
-        this.container = frame.getContentPane();
-        
-        JPanel panel = new JPanel();
-        
-        this.container.add(panel);
+//        this.container = frame.getContentPane();
+//        
+//        JPanel panel = new JPanel();
+//        
+//        this.container.add(panel);
 
-        this.tiedot.lataa(panel);
+        this.tiedot.lataa(frame.getContentPane());
     }
     
     public void kaanny(boolean oikea) {

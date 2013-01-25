@@ -3,8 +3,12 @@ package Sovelluslogiikka;
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +26,8 @@ public class Tiedot {
     private Container container;
     private CardLayout cardlayout;
     private JPanel jpanel;
-
+    private JButton kayta;
+    
     public Tiedot() {
         this.eiTallennuksia = true;
         this.cardlayout = new CardLayout();
@@ -37,17 +42,18 @@ public class Tiedot {
         }
 
         this.paivita();
+        this.paivitaButtonit();
 
     }
 
     public void seuraavaRuutu() {
         Sijainti josNull = this.sijainti;
         sijainti = sijainti.liiku(suunta);
-        
+
         if (sijainti == null) {
             this.sijainti = josNull;
         }
-        
+
         this.paivita();
         this.nayta();
     }
@@ -71,9 +77,12 @@ public class Tiedot {
 
     private void nayta() {
         this.cardlayout.show(jpanel, this.suunta.toString());
+        this.paivitaButtonit();
     }
 
     public void paivita() {
+
+
         this.ruutu = sijainti.getRuutu();
 
         jpanel = new JPanel(cardlayout);
@@ -89,7 +98,33 @@ public class Tiedot {
         jpanel.add(lansi, "LANSI");
 
         container.removeAll();
-        container.add(jpanel);
+
+        JPanel tausta = this.haeUI(jpanel);
+        container.add(tausta);
+    }
+
+    private JPanel haeUI(JPanel jpanel) {
+        JPanel tausta = new JPanel();
+        tausta.setLayout(new BorderLayout());
+
+        tausta.add(jpanel);
+
+        // lisätään buttonit alaosaan, gridlayout?
+        this.kayta = new JButton("kaanny");
+        tausta.add(kayta, BorderLayout.SOUTH);
+        kayta.addActionListener(new buttonUseListener(this));
+
+        return tausta;
+    }
+
+    private void paivitaButtonit() {
+        //tsekkaa, mitä nappuloita on käytettävissä ja disablee joidenkin käytön
+        if (this.ruutu.getNakyma(suunta).onkoKaytettava()) {
+            this.kayta.setEnabled(true);
+        } else {
+            this.kayta.setEnabled(false);
+        }
+        
     }
 
     public Suunta getSuunta() {
