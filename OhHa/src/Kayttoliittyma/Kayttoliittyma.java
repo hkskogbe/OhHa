@@ -4,6 +4,7 @@ import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tiedot;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
@@ -28,9 +29,10 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame();
-        frame.setPreferredSize(new Dimension(640, 480));
+        frame.setPreferredSize(new Dimension(640, 440));
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        
         this.lataaPeli();
 
         this.frame.addKeyListener(new NappisKuuntelija(this));

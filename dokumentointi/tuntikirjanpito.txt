@@ -13,8 +13,15 @@ Muutamia tunteja (3-5) koodailua
 1-2 tuntia 
 
 25.1.
-2 tuntia ohjelman rakenteen sekä actionlistenerien sun muun suunnittelussa ja ohjelmoinnissa
+2 tuntia ohjelman rakenteen sekä actionlistenerien sun muun suunnittelussa ja ohjelmoinnissa, 3 tuntia jpanelien kanssa
 
+26.1.
+3-4 tuntia käytetty, oivalluksia ohjelman rakenteen suhteen (Tallennus-luokka yms)
 
+28.1.
+1-2 tuntia refaktorointia ja testejä
+
+29.1.
+Graafista ulkoasua paranneltu, uusi luokka lataamista varten
 
 
