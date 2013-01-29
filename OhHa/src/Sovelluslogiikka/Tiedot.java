@@ -21,9 +21,6 @@ import javax.swing.JPanel;
 
 public class Tiedot {
 
-    // pitää kirjaa mm. suunnasta ja sijainnista
-    // lataamistoiminto sun muu siirretään omaan luokkaansa
-    // toistaiseksi luokalla voi olla vähän ylimääräistä tekemistä
     private Tallennus tallennus;
     private Lataaja lataaja;
     private Ruutu ruutu;
