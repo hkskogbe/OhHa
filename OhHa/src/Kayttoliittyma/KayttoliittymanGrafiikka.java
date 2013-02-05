@@ -110,7 +110,7 @@ public class KayttoliittymanGrafiikka {
             container.add(tausta);
             tiedot.setItemValikko(true);
 
-            tiedot.paivitaButtonit();
+            this.naytaTeksti("   ");
             this.tutkiButton.setEnabled(false);
             this.lataaButton.setEnabled(false);
             this.tallennaButton.setEnabled(false);
