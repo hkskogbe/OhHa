@@ -1,3 +1,5 @@
+package Sovelluslogiikka;
+
 
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;

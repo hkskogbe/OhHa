@@ -1,3 +1,4 @@
+package Sovelluslogiikka;
 
 import Sovelluslogiikka.Tallennus;
 import java.util.HashMap;
@@ -27,10 +28,6 @@ public class TallennusTest {
         lista.put("Toka", Boolean.FALSE);
         lista.put("Vika", Boolean.TRUE);
         this.t2 = new Tallennus(lista);
-    }
-
-    @After
-    public void tearDown() {
     }
 
     @Test
@@ -63,6 +60,14 @@ public class TallennusTest {
     public void mapKonstruktoriPalauttaaSamatArvotHaettaessaListaTakaisin() {
         Map<String, Boolean> toinen = t2.getArvoLista();
 
-        assertEquals(lista.get("Eka"),toinen.get("Eka"));
+        assertEquals(lista.get("Eka"), toinen.get("Eka"));
+    }
+
+    @Test
+    public void eiVoiLisataKahtaSamaaArvoa() {
+        boolean x = t2.getArvo("Eka");
+        t2.setTrue("Eka");
+        boolean z = t2.getArvo("Eka");
+        assertEquals(x,z);
     }
 }

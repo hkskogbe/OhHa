@@ -1,3 +1,5 @@
+package Sovelluslogiikka.Ruudut;
+
 
 import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
@@ -32,10 +34,10 @@ public class RuutuTest {
 
     @Before
     public void setUp() {
-        A = new Nakyma((new ImageIcon()), true);
-        B = new Nakyma((new ImageIcon()), true);
-        C = new Nakyma((new ImageIcon()), true);
-        D = new Nakyma((new ImageIcon()), true);
+        A = new Nakyma((new ImageIcon()));
+        B = new Nakyma((new ImageIcon()));
+        C = new Nakyma((new ImageIcon()));
+        D = new Nakyma((new ImageIcon()));
         ruutu = new Ruutu(A, B, C, D);
     }
 

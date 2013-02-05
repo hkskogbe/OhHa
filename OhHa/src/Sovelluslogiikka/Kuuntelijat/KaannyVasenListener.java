@@ -1,15 +1,18 @@
-
-package Sovelluslogiikka.kuuntelijat;
+package Sovelluslogiikka.Kuuntelijat;
 
 import Sovelluslogiikka.Tiedot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Vasemmalle kääntymisestä huolehtivan painikkeen painallusten kuuntelu.
+ *
+ */
+public class KaannyVasenListener implements ActionListener {
 
-public class kaannyVasenListener implements ActionListener{
     private Tiedot tiedot;
 
-    public kaannyVasenListener(Tiedot tiedot) {
+    public KaannyVasenListener(Tiedot tiedot) {
         this.tiedot = tiedot;
     }
 

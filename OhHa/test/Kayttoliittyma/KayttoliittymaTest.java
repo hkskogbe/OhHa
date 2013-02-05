@@ -1,3 +1,5 @@
+package Kayttoliittyma;
+
 
 import Kayttoliittyma.Kayttoliittyma;
 import Sovelluslogiikka.Suunta;

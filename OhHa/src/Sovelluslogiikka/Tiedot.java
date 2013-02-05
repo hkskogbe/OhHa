@@ -1,29 +1,23 @@
 package Sovelluslogiikka;
 
+import Kayttoliittyma.KayttoliittymanGrafiikka;
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
+import Sovelluslogiikka.Ruudut.KlikattavienHiiriKuuntelija;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
-import Sovelluslogiikka.kuuntelijat.buttonEteneListener;
-import Sovelluslogiikka.kuuntelijat.buttonExamineListener;
-import Sovelluslogiikka.kuuntelijat.buttonUseListener;
-import Sovelluslogiikka.kuuntelijat.kaannyOikeaListener;
-import Sovelluslogiikka.kuuntelijat.kaannyVasenListener;
-import java.awt.BorderLayout;
+import Sovelluslogiikka.Tavarat.Tavarat;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Tiedot pitää kirjaa pelin tämänhetkisestä tilasta, esimerkiksi suunnasta ja
+ * sijainnista.
+ *
+ */
 public class Tiedot {
 
-    // pitää kirjaa mm. suunnasta ja sijainnista
-    // lataamistoiminto sun muu siirretään omaan luokkaansa
-    // toistaiseksi luokalla voi olla vähän ylimääräistä tekemistä
     private Tallennus tallennus;
     private Lataaja lataaja;
     private Ruutu ruutu;
@@ -32,16 +26,15 @@ public class Tiedot {
     private Container container;
     private CardLayout cardlayout;
     private JPanel jpanel;
-    private JButton kayta;
-    private JButton tutki;
-    private JButton etene;
-    private JButton tallenna;
-    private JButton lataa;
     private JLabel ylapalkki;
+    private KlikattavienHiiriKuuntelija shk;
+    private Tavarat tavarat;
+    private boolean itemValikko;
+    private KayttoliittymanGrafiikka kayttiksenGrafiikka;
 
     public Tiedot() {
         this.cardlayout = new CardLayout();
-
+        this.kayttiksenGrafiikka = new KayttoliittymanGrafiikka(this);
     }
 
     public void lataa(Container container) {
@@ -55,6 +48,9 @@ public class Tiedot {
             this.tallennus = new Tallennus();
             this.suunta = Suunta.POHJOINEN;
             sijainti = new SijaintiA1(this);
+            this.tavarat = new Tavarat();
+            tavarat.lisaaTavara("Escape Rope");
+            tavarat.lisaaTavara("Rare Candy");
         }
 
         this.paivita();
@@ -62,16 +58,17 @@ public class Tiedot {
 
     }
 
-    public void seuraavaRuutu() {
-        Sijainti next = sijainti.liiku(suunta);
+    private boolean onSeuraavaRuutu() {
+        Sijainti onko = this.sijainti.liiku(suunta);
+        return (onko != null ? true : false);
+    }
 
-        if (next == null) {
-        } else {
-            sijainti = next;
+    public void seuraavaRuutu() {
+        if (onSeuraavaRuutu()) {
+            this.sijainti = sijainti.liiku(suunta);
             this.paivita();
             this.nayta();
         }
-
     }
 
     public void kaanny(boolean oikea) {
@@ -91,14 +88,19 @@ public class Tiedot {
         nayta();
     }
 
-    private void nayta() {
+    public void nayta() {
         this.cardlayout.show(jpanel, this.suunta.toString());
         this.paivitaButtonit();
+        this.paivitaKlikattavat();
+    }
+
+    private void paivitaKlikattavat() {
+        jpanel.removeMouseListener(shk);
+        shk = new KlikattavienHiiriKuuntelija(sijainti, ruutu.getNakyma(suunta).getKlikattavat());
+        jpanel.addMouseListener(shk);
     }
 
     public void paivita() {
-
-
         this.ruutu = sijainti.getRuutu();
 
         jpanel = new JPanel(cardlayout);
@@ -117,103 +119,16 @@ public class Tiedot {
 
         JPanel tausta = this.haeUI(jpanel);
         container.add(tausta);
+
+        this.paivitaKlikattavat();
     }
 
     private JPanel haeUI(JPanel jpanel) {
-        JPanel tausta = new JPanel(new BorderLayout());
-        tausta.setBackground(Color.black);
-
-        JPanel alaosa = new JPanel(new GridLayout(1, 5));
-        JPanel ylaosa = new JPanel(new GridLayout());
-        ylaosa.setBackground(Color.black);
-        this.ylapalkki = new JLabel();
-        ylapalkki.setForeground(Color.white);
-        ylaosa.add(ylapalkki);
-
-
-        tausta.add(ylaosa, BorderLayout.NORTH);
-        tausta.add(jpanel);
-        tausta.add(alaosa, BorderLayout.SOUTH);
-
-        // Buttonit
-        this.kayta = new JButton("Käytä");
-        kayta.setBackground(Color.black);
-        kayta.setForeground(Color.white);
-        kayta.addActionListener(new buttonUseListener(this));
-        kayta.setBorderPainted(false);
-
-        this.tutki = new JButton("Tutki");
-        tutki.setBackground(Color.black);
-        tutki.setForeground(Color.white);
-        tutki.addActionListener(new buttonExamineListener(this));
-        tutki.setBorderPainted(false);
-
-        this.etene = new JButton("Etene");
-        etene.setBackground(Color.black);
-        etene.setForeground(Color.white);
-        etene.addActionListener(new buttonEteneListener(this));
-
-        this.tallenna = new JButton("Tallenna");
-        tallenna.setBackground(Color.black);
-        tallenna.setForeground(Color.white);
-        tallenna.setBorderPainted(false);
-
-        this.lataa = new JButton("Lataa");
-        lataa.setBackground(Color.black);
-        lataa.setForeground(Color.white);
-        lataa.setBorderPainted(false);
-
-        JButton oikea = new JButton();
-        oikea.addActionListener(new kaannyOikeaListener(this));
-        oikea.setPreferredSize(new Dimension(20, 640));
-        oikea.setOpaque(false);
-        oikea.setContentAreaFilled(false);
-        oikea.setBorderPainted(false);
-        ImageIcon tyhjaIcon = new ImageIcon(getClass().getResource("buttonIcons/tyhja.gif"));
-        ImageIcon oikeaIcon = new ImageIcon(getClass().getResource("buttonIcons/oikea.gif"));
-        oikea.setIcon(tyhjaIcon);
-        oikea.setRolloverIcon(oikeaIcon);
-        oikea.setFocusPainted(false);
-
-        JButton vasen = new JButton();
-        vasen.addActionListener(new kaannyVasenListener(this));
-        vasen.setPreferredSize(new Dimension(20, 640));
-        vasen.setOpaque(false);
-        vasen.setContentAreaFilled(false);
-        vasen.setBorderPainted(false);
-        ImageIcon vasenIcon = new ImageIcon(getClass().getResource("buttonIcons/vasen.gif"));
-        vasen.setIcon(tyhjaIcon);
-        vasen.setRolloverIcon(vasenIcon);
-        vasen.setFocusPainted(false);
-        
-        
-        alaosa.add(kayta);
-        alaosa.add(tutki);
-        alaosa.add(etene);
-        alaosa.add(lataa);
-        alaosa.add(tallenna);
-
-        tausta.add(vasen, BorderLayout.WEST);
-        tausta.add(oikea, BorderLayout.EAST);
-
-        return tausta;
+        return this.kayttiksenGrafiikka.haeUI(jpanel);
     }
 
     public void paivitaButtonit() {
-
-        if (this.ruutu.getNakyma(suunta).onkoKaytettava()) {
-            this.kayta.setEnabled(true);
-        } else {
-            this.kayta.setEnabled(false);
-        }
-
-        if (this.ruutu.getNakyma(suunta).onkoLuettava()) {
-            this.tutki.setEnabled(true);
-        } else {
-            this.tutki.setEnabled(false);
-        }
-
-        this.ylapalkki.setText("   ");
+        this.kayttiksenGrafiikka.paivitaButtonit(this.onSeuraavaRuutu(), ruutu, suunta);
     }
 
     public Suunta getSuunta() {
@@ -238,18 +153,43 @@ public class Tiedot {
     }
 
     public void naytaTeksti(String teksti) {
-        this.ylapalkki.setText("      " + teksti);
+        kayttiksenGrafiikka.naytaTeksti(teksti);
     }
 
     public String getTeksti() {
-        return this.ylapalkki.getText();
-    }
-
-    public void kayta() {
-        this.sijainti.kayta(suunta);
+        return this.kayttiksenGrafiikka.getYlaPalkinText();
     }
 
     public Tallennus getTallennus() {
         return this.tallennus;
+    }
+
+    public void itemit() {
+        kayttiksenGrafiikka.itemit(container);
+    }
+
+    public void kaytaItem(String item) {
+        this.itemit();
+        this.sijainti.kaytaItem(item);
+    }
+
+    public void lisaaItemReppuun(String item) {
+        this.tavarat.lisaaTavara(item);
+    }
+
+    public void poistaItemRepusta(String item) {
+        this.tavarat.poista(item);
+    }
+
+    public void setItemValikko(boolean b) {
+        this.itemValikko = b;
+    }
+
+    public boolean itemValikko() {
+        return itemValikko;
+    }
+
+    public Tavarat getTavarat() {
+        return tavarat;
     }
 }

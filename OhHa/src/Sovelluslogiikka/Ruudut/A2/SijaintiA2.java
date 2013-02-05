@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Sovelluslogiikka.Ruudut.A2;
 
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
+import Sovelluslogiikka.Ruudut.Klikattava;
 import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
@@ -12,8 +9,12 @@ import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tallennus;
 import Sovelluslogiikka.Tiedot;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
+/**
+ * A2 on testisijainti, jonka avulla nähdään, toimiiko siirtyminen ruudusta A1
+ * pois. Käy myös pohjasta uusille sijainneille.
+ *
+ */
 public class SijaintiA2 implements Sijainti {
 
     private Tiedot tiedot;
@@ -28,10 +29,10 @@ public class SijaintiA2 implements Sijainti {
         this.tiedot = tiedot;
         this.tallennus = tiedot.getTallennus();
 
-        pohjoinen = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2pohjoinen.jpg")), false);
-        ita = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2ita.jpg")), false);
-        etela = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2etela.jpg")), false);
-        lansi = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2lansi.jpg")), false);
+        pohjoinen = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2pohjoinen.jpg")));
+        ita = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2ita.jpg")));
+        etela = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2etela.jpg")));
+        lansi = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A2lansi.jpg")));
 
         this.ruutu = new Ruutu(pohjoinen, ita, etela, lansi);
     }
@@ -39,15 +40,12 @@ public class SijaintiA2 implements Sijainti {
     @Override
     public Sijainti liiku(Suunta suunta) {
         if (suunta == Suunta.POHJOINEN) {
-            System.out.println("You hit your head on an invisible wall.");
             return null;
         } else if (suunta == Suunta.ITA) {
-            System.out.println("You hit your head on an invisible wall.");
             return null;
         } else if (suunta == Suunta.ETELA) {
             return new SijaintiA1(tiedot);
         } else {
-            System.out.println("You hit your head on an invisible wall.");
             return null;
         }
     }
@@ -91,31 +89,14 @@ public class SijaintiA2 implements Sijainti {
     }
 
     @Override
-    public void kayta(Suunta suunta) {
-        if (suunta == Suunta.POHJOINEN) {
-            this.kaytaPohjoinen();
-        } else if (suunta == Suunta.ITA) {
-            this.kaytaIta();
-        } else if (suunta == Suunta.ETELA) {
-            this.kaytaEtela();
-        } else {
-            this.kaytaLansi();
-        }
+    public void klikkaa(Klikattava k) {
     }
 
     @Override
-    public void kaytaPohjoinen() {
+    public void kaytaItem(String item) {
     }
 
     @Override
-    public void kaytaIta() {
-    }
-
-    @Override
-    public void kaytaEtela() {
-    }
-
-    @Override
-    public void kaytaLansi() {
+    public void luoKlikattavat() {
     }
 }

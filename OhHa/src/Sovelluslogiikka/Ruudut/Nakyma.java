@@ -1,23 +1,29 @@
 package Sovelluslogiikka.Ruudut;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+/**
+ * Nakyma pitää sisällään tiedot siitä, kuinka yksittäisen kuvan kanssa pystyy
+ * toimimaan.
+ *
+ */
 public class Nakyma {
 
-    private boolean kaytettava;
     private ImageIcon kuva;
     private String teksti;
     private boolean luettava;
     private boolean onkoJoTutkittu;
+    private ArrayList<Klikattava> klikattavat;
 
-    public Nakyma(ImageIcon kuva, boolean kaytettava) {
-        this.kaytettava = kaytettava;
+    public Nakyma(ImageIcon kuva) {
         this.kuva = kuva;
         this.teksti = "";
         this.luettava = false;
         this.onkoJoTutkittu = false;
+        this.klikattavat = new ArrayList<Klikattava>();
     }
 
     public Image getKuva() {
@@ -28,13 +34,6 @@ public class Nakyma {
         return this.kuva;
     }
 
-    public void setKaytettava(boolean kaytettava) {
-        this.kaytettava = kaytettava;
-    }
-
-    public boolean onkoKaytettava() {
-        return this.kaytettava;
-    }
     public boolean onkoLuettava() {
         return this.luettava;
     }
@@ -48,8 +47,16 @@ public class Nakyma {
         this.onkoJoTutkittu = true;
         return this.teksti;
     }
-    
+
     public boolean tutkittu() {
         return this.onkoJoTutkittu;
+    }
+
+    public void setKlikattava(Klikattava klikattava) {
+        this.klikattavat.add(klikattava);
+    }
+
+    public ArrayList<Klikattava> getKlikattavat() {
+        return klikattavat;
     }
 }

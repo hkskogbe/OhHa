@@ -2,6 +2,11 @@ package Sovelluslogiikka.Ruudut;
 
 import Sovelluslogiikka.Suunta;
 
+/**
+ * Sijainti luo ja sisältää yksittäisen alueen tiedot ja tapahtumat.
+ * 
+ */
+
 public interface Sijainti {
 
     public Sijainti liiku(Suunta suunta);
@@ -12,9 +17,8 @@ public interface Sijainti {
     void tutkiEtela();
     void tutkiLansi();
 
-    public void kayta(Suunta suunta);
-    void kaytaPohjoinen();
-    void kaytaIta();
-    void kaytaEtela();
-    void kaytaLansi();
+    public void klikkaa(Klikattava k);
+    void luoKlikattavat();
+
+    public void kaytaItem(String item);
 }

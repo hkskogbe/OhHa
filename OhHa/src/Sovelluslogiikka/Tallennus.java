@@ -3,6 +3,10 @@ package Sovelluslogiikka;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Tallennus sisältää tiedot pelin sisäisistä muuttujista.
+ *
+ */
 public class Tallennus {
 
     private Map<String, Boolean> arvot;
@@ -24,7 +28,7 @@ public class Tallennus {
     }
 
     public boolean getArvo(String haettu) {
-        
+
         for (String nimi : arvot.keySet()) {
             if (nimi.equals(haettu)) {
                 return arvot.get(nimi);

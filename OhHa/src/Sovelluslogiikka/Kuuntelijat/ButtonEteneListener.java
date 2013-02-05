@@ -1,15 +1,18 @@
-
-package Sovelluslogiikka.kuuntelijat;
+package Sovelluslogiikka.Kuuntelijat;
 
 import Sovelluslogiikka.Tiedot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class buttonEteneListener implements ActionListener {
+/**
+ * Etene-painikkeen painallusten kuuntelu.
+ *
+ */
+public class ButtonEteneListener implements ActionListener {
 
     private Tiedot tiedot;
-    
-    public buttonEteneListener(Tiedot tiedot) {
+
+    public ButtonEteneListener(Tiedot tiedot) {
         this.tiedot = tiedot;
     }
 
@@ -17,5 +20,4 @@ public class buttonEteneListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         this.tiedot.seuraavaRuutu();
     }
-    
 }

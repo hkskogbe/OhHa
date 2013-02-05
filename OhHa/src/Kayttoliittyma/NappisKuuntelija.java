@@ -4,6 +4,11 @@ package Kayttoliittyma;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * NappisKuuntelija käsittelee näppäimistöinputtia. 
+ *
+ */
+
 public class NappisKuuntelija implements KeyListener{
 
     private Kayttoliittyma kayttis;

@@ -24,4 +24,8 @@ Muutamia tunteja (3-5) koodailua
 29.1.
 Graafista ulkoasua paranneltu, uusi luokka lataamista varten
 
+1-2.2.
+Ruudulla klikkaaminen toimii jotenkin
 
+3.2.
+Klikkauksen hienosäätöä, javadocs, item-valikko, turhaksi tulleen käytä-toiminnon poistaminen, 5 tuntia

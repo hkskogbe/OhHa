@@ -1,6 +1,7 @@
 package Sovelluslogiikka.Ruudut.A1;
 
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
+import Sovelluslogiikka.Ruudut.Klikattava;
 import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
@@ -8,8 +9,11 @@ import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tallennus;
 import Sovelluslogiikka.Tiedot;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
+/**
+ * Pelin ensimmäinen alue.
+ *
+ */
 public class SijaintiA1 implements Sijainti {
 
     private Tiedot tiedot;
@@ -24,12 +28,13 @@ public class SijaintiA1 implements Sijainti {
         this.tiedot = tiedot;
         this.tallennus = tiedot.getTallennus();
 
-        pohjoinen = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1pohjoinen.jpg")), false);
-        ita = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1ita.jpg")), false);
-        etela = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1etela.jpg")), false);
-        lansi = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1lansi.jpg")), false);
+        pohjoinen = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1pohjoinen.jpg")));
+        ita = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1ita.jpg")));
+        etela = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1etela.jpg")));
+        lansi = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1lansi.jpg")));
 
-        this.luo();
+        this.asetaKuvaukset();
+        this.luoKlikattavat();
 
         this.ruutu = new Ruutu(pohjoinen, ita, etela, lansi);
     }
@@ -65,9 +70,15 @@ public class SijaintiA1 implements Sijainti {
         return this.ruutu;
     }
 
-    public void luo() {
+    private void asetaKuvaukset() {
         this.pohjoinen.setTeksti("You see a magical barrier of something.");
-        this.etela.setTeksti("A rusty old something");
+        this.etela.setTeksti("A rusty old switch remains unpressed");
+    }
+
+    @Override
+    public void luoKlikattavat() {
+        this.pohjoinen.setKlikattava(new Klikattava("wasd", 50, 50, 50));
+        this.etela.setKlikattava(new Klikattava("a1switch", 500, 100, 50));
     }
 
     @Override
@@ -102,9 +113,7 @@ public class SijaintiA1 implements Sijainti {
         if (a1Switch()) {
             tiedot.naytaTeksti("The switch has been activated.");
         } else {
-            etela.setKaytettava(true);
-            tiedot.paivitaButtonit();
-            tiedot.naytaTeksti("There is an invisible switch.");
+            tiedot.naytaTeksti(ruutu.getNakyma(Suunta.ETELA).getTeksti());
         }
     }
 
@@ -114,42 +123,29 @@ public class SijaintiA1 implements Sijainti {
     }
 
     @Override
-    public void kayta(Suunta suunta) {
-        if (suunta == Suunta.POHJOINEN) {
-            this.kaytaPohjoinen();
-        } else if (suunta == Suunta.ITA) {
-            this.kaytaIta();
-        } else if (suunta == Suunta.ETELA) {
-            this.kaytaEtela();
-        } else {
-            this.kaytaLansi();
+    public void klikkaa(Klikattava k) {
+        if (k.getNimi().equals("wasd")) {
+            tiedot.naytaTeksti("wasd");
         }
-    }
-
-    @Override
-    public void kaytaPohjoinen() {
-    }
-
-    @Override
-    public void kaytaIta() {
-    }
-
-    @Override
-    public void kaytaEtela() {
-        if (a1Switch()) {
-            tiedot.naytaTeksti("You've already used the switch");
-        } else {
-            tallennus.setTrue("A1switch");
-            etela.setKaytettava(false);
-            tiedot.naytaTeksti("You hear a not-so-distant sound after using the switch");
+        if (k.getNimi().equals("a1switch")) {
+            if (a1Switch()) {
+                tiedot.naytaTeksti("You've already used the switch");
+            } else {
+                tallennus.setTrue("A1switch");
+                tiedot.naytaTeksti("You hear a not-so-distant sound after using the switch");
+            }
         }
-    }
-
-    @Override
-    public void kaytaLansi() {
     }
 
     private boolean a1Switch() {
         return tallennus.getArvo("A1switch");
+    }
+
+    @Override
+    public void kaytaItem(String item) {
+        if (item.equals("jotain") && tiedot.getSuunta() == Suunta.LANSI) {
+        } else {
+            tiedot.naytaTeksti("There's a time and place for everything, but not now!");
+        }
     }
 }
