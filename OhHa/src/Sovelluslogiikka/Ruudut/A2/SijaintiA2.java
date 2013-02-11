@@ -6,7 +6,7 @@ import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
-import Sovelluslogiikka.Tallennus;
+import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
 import Sovelluslogiikka.Tiedot;
 import javax.swing.ImageIcon;
 

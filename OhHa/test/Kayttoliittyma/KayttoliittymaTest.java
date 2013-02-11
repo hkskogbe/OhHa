@@ -24,7 +24,7 @@ public class KayttoliittymaTest {
     public void setUp() {
         tiedot = new Tiedot();
         k = new Kayttoliittyma(tiedot);
-        tiedot.lataa(new Container());
+        tiedot.lataaUusiPeli(new Container());
     }
 
     @After

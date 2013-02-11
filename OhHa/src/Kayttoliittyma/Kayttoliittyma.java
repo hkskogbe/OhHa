@@ -16,6 +16,11 @@ public class Kayttoliittyma implements Runnable {
     private Container container;
     private Tiedot tiedot;
 
+    /**
+     * Luo uuden käyttöliittymän
+     *
+     * @param tiedot
+     */
     public Kayttoliittyma(Tiedot tiedot) {
         this.tiedot = tiedot;
     }
@@ -33,14 +38,26 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * Kutsuu Tiedot-luokan metodia luomaan pelin ensimmäisen alueen
+     */
     public void lataaPeli() {
-        this.tiedot.lataa(frame.getContentPane());
+        this.tiedot.lataaUusiPeli(frame.getContentPane());
     }
 
+    /**
+     * Kääntää pelihahmon liikkumissuuntaa.
+     *
+     * @param oikea, oikea = true, false = vasen
+     */
     public void kaanny(boolean oikea) {
         tiedot.kaanny(oikea);
     }
 
+    /**
+     * Liikkuu sijainnin määrittämään seuraavaan ruutuun, mikäli se on
+     * mahdollista
+     */
     public void liikuEteenpain() {
         this.tiedot.seuraavaRuutu();
     }

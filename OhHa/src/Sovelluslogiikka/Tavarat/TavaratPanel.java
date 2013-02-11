@@ -17,6 +17,12 @@ public class TavaratPanel extends JPanel {
     private Tavarat tavarat;
     private int maxrivit;
 
+    /**
+     * Konstruktorissa säädetään mm. uuden TavaratPanel-olion layout sekä
+     * Tavarat-jotka listataan panelissa
+     *
+     * @param Tavarat, jotka näytetään panelissa
+     */
     public TavaratPanel(Tavarat tavarat) {
         this.tavarat = tavarat;
         this.maxrivit = 10;
@@ -24,6 +30,11 @@ public class TavaratPanel extends JPanel {
         this.setBackground(Color.black);
     }
 
+    /**
+     * Asettaa paneliin JButtonit jokaiselle itemille
+     *
+     * @param tiedot
+     */
     public void listaa(Tiedot tiedot) {
         JLabel otsikko = new JLabel("Items in your inventory");
         otsikko.setForeground(Color.white);

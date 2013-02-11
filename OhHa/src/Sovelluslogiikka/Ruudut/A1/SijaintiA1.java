@@ -6,7 +6,7 @@ import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
-import Sovelluslogiikka.Tallennus;
+import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
 import Sovelluslogiikka.Tiedot;
 import javax.swing.ImageIcon;
 
@@ -70,6 +70,10 @@ public class SijaintiA1 implements Sijainti {
         return this.ruutu;
     }
 
+    /**
+     * Kuvauksien asettaminen näkymille on tässä toteutettu erillisen metodin
+     * avulla
+     */
     private void asetaKuvaukset() {
         this.pohjoinen.setTeksti("You see a magical barrier of something.");
         this.etela.setTeksti("A rusty old switch remains unpressed");
@@ -131,14 +135,14 @@ public class SijaintiA1 implements Sijainti {
             if (a1Switch()) {
                 tiedot.naytaTeksti("You've already used the switch");
             } else {
-                tallennus.setTrue("A1switch");
+                tallennus.setTrue("a1switch");
                 tiedot.naytaTeksti("You hear a not-so-distant sound after using the switch");
             }
         }
     }
 
     private boolean a1Switch() {
-        return tallennus.getArvo("A1switch");
+        return tallennus.getArvo("a1switch");
     }
 
     @Override

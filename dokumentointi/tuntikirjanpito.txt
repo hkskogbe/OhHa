@@ -29,3 +29,17 @@ Ruudulla klikkaaminen toimii jotenkin
 
 3.2.
 Klikkauksen hienosäätöä, javadocs, item-valikko, turhaksi tulleen käytä-toiminnon poistaminen, 5 tuntia
+
+7.2.
+Lataaminen/tallentaminen pelaa, joku 5 tuntia
+
+8.2.
+Lataus- ja tallennusvalikot luotu, lataaminen kansiossa olevista tiedostoista toimii, tallentaminen ei ihan vielä, 2 tuntia
+
+9.2.
+Tallentaminen jo olemassaoleviin tiedostoihin toimii, junit testejä
+
+
+
+
+

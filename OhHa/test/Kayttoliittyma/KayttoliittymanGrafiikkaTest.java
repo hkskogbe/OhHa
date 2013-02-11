@@ -41,7 +41,7 @@ public class KayttoliittymanGrafiikkaTest {
     public void setUp() {
         c = new Container();
         t = new Tiedot();
-        t.lataa(c);
+        t.lataaUusiPeli(c);
         x = new KayttoliittymanGrafiikka(t);
         x.haeUI(new JPanel());
 
@@ -53,7 +53,7 @@ public class KayttoliittymanGrafiikkaTest {
 
     @Test
     public void itemIkkunaDisableeButtonitOikein() {
-        x.itemit(c);
+        x.itemValikko(c);
         assertFalse(x.getLataaButton().isEnabled());
     }
 
@@ -64,8 +64,8 @@ public class KayttoliittymanGrafiikkaTest {
 
     @Test
     public void itemIkkunaPoistaaNappuloidenDisableuksen() {
-        x.itemit(c);
-        x.itemit(c);
+        x.itemValikko(c);
+        x.itemValikko(c);
         assertTrue(x.getLataaButton().isEnabled());
     }
 

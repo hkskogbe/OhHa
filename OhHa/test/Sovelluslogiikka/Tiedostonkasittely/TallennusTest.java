@@ -1,6 +1,6 @@
-package Sovelluslogiikka;
+package Sovelluslogiikka.Tiedostonkasittely;
 
-import Sovelluslogiikka.Tallennus;
+import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.After;

@@ -3,27 +3,33 @@ package Kayttoliittyma;
 import Sovelluslogiikka.Kuuntelijat.ButtonEteneListener;
 import Sovelluslogiikka.Kuuntelijat.ButtonExamineListener;
 import Sovelluslogiikka.Kuuntelijat.ButtonItemsListener;
+import Sovelluslogiikka.Kuuntelijat.ButtonLoadOptionsListener;
+import Sovelluslogiikka.Kuuntelijat.ButtonSaveListener;
+import Sovelluslogiikka.Kuuntelijat.ButtonSaveOptionsListener;
 import Sovelluslogiikka.Kuuntelijat.KaannyOikeaListener;
 import Sovelluslogiikka.Kuuntelijat.KaannyVasenListener;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tavarat.TavaratPanel;
+import Sovelluslogiikka.Tiedostonkasittely.LatausPanel;
 import Sovelluslogiikka.Tiedot;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 /**
  * Luo graafisen toteutuksen käyttöliittymän päätoiminnoille.
  *
  */
-public class KayttoliittymanGrafiikka {
+public class KayttoliittymanGrafiikka implements Serializable {
 
     private JButton itemitButton;
     private JButton tutkiButton;
@@ -32,11 +38,18 @@ public class KayttoliittymanGrafiikka {
     private JButton lataaButton;
     private JLabel ylapalkki;
     private Tiedot tiedot;
+    private JPopupMenu popup;
 
     public KayttoliittymanGrafiikka(Tiedot tiedot) {
         this.tiedot = tiedot;
     }
 
+    /**
+     * Luo käyttöliittymän painikkeita sekä yläpalkin
+     *
+     * @param jpanel joka lisätään keskelle taustaa
+     * @return Palauttaa käyttöliittymän kokonaisuudessaan
+     */
     public JPanel haeUI(JPanel jpanel) {
         JPanel tausta = new JPanel(new BorderLayout());
         tausta.setBackground(Color.black);
@@ -70,6 +83,15 @@ public class KayttoliittymanGrafiikka {
         return tausta;
     }
 
+    /**
+     * Päivittää käyttöliittymän päätoimintojen painikkeet joko käytettäviksi,
+     * tai disablee ne
+     *
+     * @param onSeuraavaRuutu onko eteenpäin liikuttaessa ruutua
+     * @param ruutu jonka kautta tarkastellaan näkymiä
+     * @param suunta-parametrin avulla haetaan ruudusta näkymä, minkä avulla
+     * saadaan selville, tarvitseeko painikkeita disableta vai enableta
+     */
     public void paivitaButtonit(Boolean onSeuraavaRuutu, Ruutu ruutu, Suunta suunta) {
 
         if (ruutu.getNakyma(suunta).onkoLuettava()) {
@@ -87,8 +109,12 @@ public class KayttoliittymanGrafiikka {
         this.ylapalkki.setText("   ");
     }
 
-    public void itemit(Container container) {
-
+    /**
+     * Siirtää pelaajan item-valikkoon tai pois item-valikosta
+     *
+     * @param container sisältää pelin nykyisen graafisen esityksen
+     */
+    public void itemValikko(Container container) {
         if (tiedot.itemValikko()) {
             tiedot.paivita();
             tiedot.setItemValikko(false);
@@ -117,12 +143,93 @@ public class KayttoliittymanGrafiikka {
             this.eteneButton.setEnabled(false);
         }
 
+
     }
 
+    /**
+     * Siirtää pelaajan latausvalikkoon tai pois latausvalikosta
+     *
+     * @param container joka sisältää pelin nykyisen graafisen esityksen
+     */
+    public void latausValikko(Container container) {
+        if (tiedot.latausValikko()) {
+            tiedot.paivita();
+            tiedot.setLatausValikko(false);
+            tiedot.nayta();
+
+            this.itemitButton.setEnabled(true);
+            this.tallennaButton.setEnabled(true);
+            this.eteneButton.setEnabled(true);
+            tiedot.paivitaButtonit();
+
+        } else {
+
+            LatausPanel lp = new LatausPanel("src/Tallennukset");
+            lp.listaa(tiedot);
+
+            container.removeAll();
+
+            JPanel tausta = this.haeUI(lp);
+            container.add(tausta);
+            tiedot.setLatausValikko(true);
+
+            this.naytaTeksti("   ");
+            this.tutkiButton.setEnabled(false);
+            this.itemitButton.setEnabled(false);
+            this.tallennaButton.setEnabled(false);
+            this.eteneButton.setEnabled(false);
+        }
+    }
+
+    /**
+     * Siirtää pelaajan tallennusvalikkoon tai pois tallennusvalikosta
+     *
+     * @param container joka sisältää pelin nykyisen graafisen esityksen
+     */
+    public void tallennusValikko(Container container) {
+        if (tiedot.tallennusValikko()) {
+            tiedot.paivita();
+            tiedot.setTallennusValikko(false);
+            tiedot.nayta();
+
+            this.itemitButton.setEnabled(true);
+            this.lataaButton.setEnabled(true);
+            this.eteneButton.setEnabled(true);
+            tiedot.paivitaButtonit();
+
+        } else {
+
+            TallennusPanel tp = new TallennusPanel("src/Tallennukset");
+            tp.listaa(tiedot);
+
+            container.removeAll();
+
+            JPanel tausta = this.haeUI(tp);
+            container.add(tausta);
+            tiedot.setTallennusValikko(true);
+
+            this.naytaTeksti("   ");
+            this.tutkiButton.setEnabled(false);
+            this.itemitButton.setEnabled(false);
+            this.lataaButton.setEnabled(false);
+            this.eteneButton.setEnabled(false);
+        }
+
+    }
+
+    /**
+     * Asettaan parametrina saadun tekstin pelin tekstipalkin tekstiksi
+     *
+     * @param teksti
+     */
     public void naytaTeksti(String teksti) {
         this.ylapalkki.setText("      " + teksti);
     }
 
+    /**
+     *
+     * @return Palauttaa tällä hetkellä pelissä näytettävän tekstin
+     */
     public String getYlaPalkinText() {
         return this.ylapalkki.getText();
     }
@@ -135,6 +242,9 @@ public class KayttoliittymanGrafiikka {
         return lataaButton;
     }
 
+    /**
+     * Luo pelinäkymän alaosan valikkonäppäimet ja antaa niille actionlistenerit
+     */
     private void luoValikkoButtonit() {
         this.itemitButton = new JButton("Items");
         itemitButton.setBackground(Color.black);
@@ -157,13 +267,20 @@ public class KayttoliittymanGrafiikka {
         tallennaButton.setBackground(Color.black);
         tallennaButton.setForeground(Color.white);
         tallennaButton.setBorderPainted(false);
+        tallennaButton.addActionListener(new ButtonSaveOptionsListener(tiedot));
 
         this.lataaButton = new JButton("Lataa");
         lataaButton.setBackground(Color.black);
         lataaButton.setForeground(Color.white);
         lataaButton.setBorderPainted(false);
+        lataaButton.addActionListener(new ButtonLoadOptionsListener(tiedot));
     }
 
+    /**
+     * Luo uuden JButtonin, jonka painaminen kääntää pelaajan suuntaa vasemmalle
+     *
+     * @return Valmis vasemmallekääntymispainike
+     */
     private JButton getVasenButton() {
         JButton vasen = new JButton();
         vasen.addActionListener(new KaannyVasenListener(tiedot));
@@ -180,6 +297,11 @@ public class KayttoliittymanGrafiikka {
         return vasen;
     }
 
+    /**
+     * Luo uuden JButtonin, jonka painaminen kääntää pelaajan suuntaa oikealle
+     *
+     * @return Valmis oikeallekääntymispainike
+     */
     private JButton getOikeaButton() {
         JButton oikea = new JButton();
         oikea.addActionListener(new KaannyOikeaListener(tiedot));
@@ -192,7 +314,7 @@ public class KayttoliittymanGrafiikka {
         oikea.setIcon(tyhjaIcon);
         oikea.setRolloverIcon(oikeaIcon);
         oikea.setFocusPainted(false);
-        
+
         return oikea;
     }
 }

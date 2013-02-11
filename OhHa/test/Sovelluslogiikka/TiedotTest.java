@@ -5,7 +5,7 @@ import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
-import Sovelluslogiikka.Tallennus;
+import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
 import Sovelluslogiikka.Tiedot;
 import java.awt.Container;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class TiedotTest {
     @Before
     public void setUp() {
         this.tiedot = new Tiedot();
-        tiedot.lataa(new Container());
+        tiedot.lataaUusiPeli(new Container());
 
     }
 

@@ -1,6 +1,7 @@
 
-package Kayttoliittyma;
+package Sovelluslogiikka.Kuuntelijat;
 
+import Kayttoliittyma.Kayttoliittyma;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

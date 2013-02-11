@@ -5,8 +5,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 /**
- * KlikattavienHiiriKuuntelija käsittelee Tiedot-luokalta jokaisen näkymänvaihdon
- * yhteydessä saatavia senhetkiseen Näkymä-olioon liittyviä Klikattavia.
+ * KlikattavienHiiriKuuntelija käsittelee Tiedot-luokalta jokaisen
+ * näkymänvaihdon yhteydessä saatavia senhetkiseen Näkymä-olioon liittyviä
+ * Klikattavia.
  *
  */
 public class KlikattavienHiiriKuuntelija implements MouseListener {
@@ -14,11 +15,21 @@ public class KlikattavienHiiriKuuntelija implements MouseListener {
     private ArrayList<Klikattava> klikattavat;
     private Sijainti sijainti;
 
+    /**
+     *
+     * @param sijainti
+     * @param klikattavat
+     */
     public KlikattavienHiiriKuuntelija(Sijainti sijainti, ArrayList<Klikattava> klikattavat) {
         this.sijainti = sijainti;
         this.klikattavat = klikattavat;
     }
 
+    /**
+     * Tarkistaa jokaisen klikattava-objektin kohdalla, onko hiirievent niiden
+     * klikkaussäteen sisällä
+     *
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         for (Klikattava k : klikattavat) {
@@ -52,6 +63,5 @@ public class KlikattavienHiiriKuuntelija implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
     }
 }
