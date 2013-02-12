@@ -1,4 +1,4 @@
-package Kayttoliittyma;
+package Sovelluslogiikka.Tiedostonkasittely;
 
 import Sovelluslogiikka.Kuuntelijat.ButtonSaveListener;
 import Sovelluslogiikka.Tiedot;
@@ -25,7 +25,7 @@ public class TallennusPanel extends JPanel {
      *
      * @param kansio, johon tallennustiedostot talletetaan
      */
-    TallennusPanel(String kansio) {
+    public TallennusPanel(String kansio) {
         this.setLayout(new GridLayout(10, 2));
         this.setBackground(Color.black);
         File sijainti = new File(kansio);
