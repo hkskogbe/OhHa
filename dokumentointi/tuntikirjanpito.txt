@@ -45,5 +45,6 @@ Junit, javadoc
 16-18.2.
 Tallentaminen .jarissa ei toimi atm, refaktorointia
 
-
+19-20.2.
+Refaktorointia, esim. valikkonäkymä-boolean-arvojen yhdistäminen yhdeksi metodiksi
 
