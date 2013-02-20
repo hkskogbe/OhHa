@@ -4,17 +4,11 @@ package Sovelluslogiikka;
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Sijainti;
-import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
-import Sovelluslogiikka.Tiedot;
 import java.awt.Container;
-import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class TiedotTest {
 
@@ -82,7 +76,7 @@ public class TiedotTest {
         
         Tallennus t = tiedot.getTallennus();
         tiedot.setSijainti(s, Suunta.POHJOINEN);
-        t.setTrue("A1switch");
+        t.setTrue("a1switch");
         tiedot.seuraavaRuutu();
         
         assertEquals(s2.getClass(), tiedot.getSijainti().getClass());

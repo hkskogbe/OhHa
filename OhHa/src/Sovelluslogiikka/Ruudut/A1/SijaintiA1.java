@@ -124,7 +124,7 @@ public class SijaintiA1 implements Sijainti {
     public void klikkaa(Klikattava k) {
         if (k.getNimi().equals("wasd")) {
             tiedot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
-            tiedot.lisaaItemReppuun("Polkupyörä");
+            tiedot.lisaaItemReppuun("Uusi tavara");
         }
         if (k.getNimi().equals("a1switch")) {
             if (a1Switch()) {

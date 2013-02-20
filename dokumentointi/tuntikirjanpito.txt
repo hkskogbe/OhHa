@@ -40,11 +40,11 @@ Lataus- ja tallennusvalikot luotu, lataaminen kansiossa olevista tiedostoista to
 Tallentaminen jo olemassaoleviin tiedostoihin toimii, junit testejä
 
 10-12.2.
-Junit, javadoc
+Junit, javadoc, 6-7h
 
 16-18.2.
-Tallentaminen .jarissa ei toimi atm, refaktorointia
+Tallentaminen .jarissa ei toimi atm, refaktorointia, 4h
 
 19-20.2.
-Refaktorointia, esim. valikkonäkymä-boolean-arvojen yhdistäminen yhdeksi metodiksi
+Refaktorointia, esim. valikkonäkymä-boolean-arvojen yhdistäminen yhdeksi metodiksi, 4h
 
