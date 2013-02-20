@@ -45,22 +45,16 @@ public class SijaintiA1 implements Sijainti {
             if (a1Switch()) {
                 return new SijaintiA2(tiedot);
             } else {
-                tiedot.naytaTeksti("Magical force blocks your movement");
                 return null;
             }
 
         } else if (suunta == Suunta.ITA) {
-            tiedot.naytaTeksti("You hit your head on an invisible wall.");
             return null;
 
         } else if (suunta == Suunta.ETELA) {
-
-            tiedot.naytaTeksti("There seems to be something here.");
-
             return null;
 
         } else {
-            tiedot.naytaTeksti("You hit your head on an invisible wall.");
             return null;
         }
     }
@@ -76,7 +70,7 @@ public class SijaintiA1 implements Sijainti {
      */
     private void asetaKuvaukset() {
         this.pohjoinen.setTeksti("You see a magical barrier of something.");
-        this.etela.setTeksti("A rusty old switch remains unpressed");
+        this.etela.setTeksti("Seems you can click the white dot");
     }
 
     @Override
@@ -129,14 +123,15 @@ public class SijaintiA1 implements Sijainti {
     @Override
     public void klikkaa(Klikattava k) {
         if (k.getNimi().equals("wasd")) {
-            tiedot.naytaTeksti("wasd");
+            tiedot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
+            tiedot.lisaaItemReppuun("Polkupyörä");
         }
         if (k.getNimi().equals("a1switch")) {
             if (a1Switch()) {
                 tiedot.naytaTeksti("You've already used the switch");
             } else {
                 tallennus.setTrue("a1switch");
-                tiedot.naytaTeksti("You hear a not-so-distant sound after using the switch");
+                tiedot.naytaTeksti("You hear something nearby");
             }
         }
     }

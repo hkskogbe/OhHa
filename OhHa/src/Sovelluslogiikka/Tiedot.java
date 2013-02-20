@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 public class Tiedot {
 
     private Tallennus tallennus;
+    private String tallennusKansio;
     private Lataaja lataaja;
     private Tallentaja tallentaja;
     private Ruutu ruutu;
@@ -43,6 +44,7 @@ public class Tiedot {
     public Tiedot() {
         this.cardlayout = new CardLayout();
         this.kayttiksenGrafiikka = new KayttoliittymanGrafiikka(this);
+        this.tallennusKansio = "src/Tallennukset/";
     }
 
     /**
@@ -51,7 +53,7 @@ public class Tiedot {
      * @param latauskansio
      */
     public void lataa(String latausSijainti) {
-        this.lataaja = new Lataaja(latausSijainti);
+        this.lataaja = new Lataaja(tallennusKansio + latausSijainti);
         try {
             this.tallennus = lataaja.lataaTallennus();
             this.sijainti = lataaja.lataaSijainti(this);
@@ -74,8 +76,6 @@ public class Tiedot {
      */
     public void lataaUusiPeli(Container container) {
         this.container = container;
-//
-//        this.tallennus = lataaja.lataaTallennus("src/Tallennukset/Default Save.txt");
 
         this.tallennus = new Tallennus();
         this.suunta = Suunta.POHJOINEN;
@@ -378,5 +378,14 @@ public class Tiedot {
      */
     public void tallennusLista() {
         this.kayttiksenGrafiikka.tallennusValikko(container);
+    }
+
+    /**
+     * Palauttaa kansion, jossa tallenukset sijaitsevat.
+     *
+     * @return
+     */
+    public String getTallennusKansio() {
+        return tallennusKansio;
     }
 }

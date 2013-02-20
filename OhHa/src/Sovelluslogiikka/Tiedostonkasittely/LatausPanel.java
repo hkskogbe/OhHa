@@ -53,9 +53,9 @@ public class LatausPanel extends JPanel {
             } catch (FileNotFoundException ex) {
                 System.out.println("Error scanning file");
             }
-            String o = file.getName();
-            int pisteenpaikka = o.indexOf(".");
-            o = o.substring(0, pisteenpaikka);
+            String filenNimi = file.getName();
+            int pisteenpaikka = filenNimi.indexOf(".");
+            filenNimi = filenNimi.substring(0, pisteenpaikka);
 
 
             String paivaysString = "";
@@ -66,11 +66,11 @@ public class LatausPanel extends JPanel {
             }
 
             if (!paivaysString.isEmpty()) {
-                JButton t = new JButton(o + "   " + paivaysString);
+                JButton t = new JButton(filenNimi + "   " + paivaysString);
 
                 t.setBackground(Color.black);
                 t.setForeground(Color.white);
-                t.addActionListener(new ButtonLoadListener(tiedot, "src/Tallennukset/" + o + ".txt"));
+                t.addActionListener(new ButtonLoadListener(tiedot, filenNimi + ".txt"));
                 this.add(t);
             }
         }

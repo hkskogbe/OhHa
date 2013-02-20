@@ -164,7 +164,7 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
         } else {
 
-            LatausPanel lp = new LatausPanel("src/Tallennukset");
+            LatausPanel lp = new LatausPanel(tiedot.getTallennusKansio());
             lp.listaa(tiedot);
 
             container.removeAll();
@@ -199,7 +199,7 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
         } else {
 
-            TallennusPanel tp = new TallennusPanel("src/Tallennukset");
+            TallennusPanel tp = new TallennusPanel(tiedot.getTallennusKansio());
             tp.listaa(tiedot);
 
             container.removeAll();

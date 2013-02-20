@@ -39,7 +39,11 @@ Lataus- ja tallennusvalikot luotu, lataaminen kansiossa olevista tiedostoista to
 9.2.
 Tallentaminen jo olemassaoleviin tiedostoihin toimii, junit testejä
 
+10-12.2.
+Junit, javadoc
 
+16-18.2.
+Tallentaminen .jarissa ei toimi atm, refaktorointia
 
 
 

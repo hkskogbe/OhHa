@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Lataaja {
 
     private Scanner scanner;
-    private File save;
+    private String save;
 
     /**
      * Uusi lataaja saa konstruktorin arvona kohdetiedoston
@@ -25,7 +25,7 @@ public class Lataaja {
      * @param kohdetiedosto
      */
     public Lataaja(String save) {
-        this.save = new File(save);
+        this.save = save;
     }
 
     /**
@@ -37,7 +37,8 @@ public class Lataaja {
      */
     public Tallennus lataaTallennus() throws FileNotFoundException {
 
-        this.scanner = new Scanner(save);
+        File s = new File(save);
+        luoSkanneri();
 
 
         Tallennus uusiTallennus = new Tallennus();
@@ -46,7 +47,6 @@ public class Lataaja {
             String nyt = scanner.nextLine();
             if (nyt.contains(":")) {
                 String[] osat = nyt.split(":");
-
                 if (osat[1].equals("true")) {
                     uusiTallennus.setTrue(osat[0]);
                 } else {
@@ -64,7 +64,7 @@ public class Lataaja {
      * @throws FileNotFoundException, jos tiedostopolku on virheellinen
      */
     public Suunta lataaSuunta() throws FileNotFoundException {
-        this.scanner = new Scanner(save);
+        luoSkanneri();
 
         String s = scanner.nextLine();
 
@@ -87,7 +87,7 @@ public class Lataaja {
      * @throws FileNotFoundException, jos tiedostopolku on virheellinen
      */
     public Tavarat lataaTavarat() throws FileNotFoundException {
-        this.scanner = new Scanner(save);
+        luoSkanneri();
 
         Tavarat tav = new Tavarat();
 
@@ -111,7 +111,7 @@ public class Lataaja {
      * @throws FileNotFoundException, jos tiedostopolku on virheellinen
      */
     public Sijainti lataaSijainti(Tiedot tiedot) throws FileNotFoundException {
-        this.scanner = new Scanner(save);
+        luoSkanneri();
 
         String sijaintiString = "";
 
@@ -120,6 +120,7 @@ public class Lataaja {
 
             if (nyt.contains("Sovelluslogiikka.Ruudut")) {
                 sijaintiString = nyt;
+                break;
             }
         }
 
@@ -154,5 +155,9 @@ public class Lataaja {
         }
 
         return null;
+    }
+
+    private void luoSkanneri() throws FileNotFoundException {
+        this.scanner = new Scanner(new File(save));
     }
 }
