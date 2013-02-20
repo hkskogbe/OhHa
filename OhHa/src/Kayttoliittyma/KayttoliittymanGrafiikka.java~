@@ -115,9 +115,9 @@ public class KayttoliittymanGrafiikka implements Serializable {
      * @param container sisältää pelin nykyisen graafisen esityksen
      */
     public void itemValikko(Container container) {
-        if (tiedot.valikkoNakyma()) {
+        if (tiedot.itemValikko()) {
             tiedot.paivita();
-            tiedot.setValikkoNakyma(false);
+            tiedot.setItemValikko(false);
             tiedot.nayta();
 
             this.lataaButton.setEnabled(true);
@@ -134,7 +134,7 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
             JPanel tausta = this.haeUI(tp);
             container.add(tausta);
-            tiedot.setValikkoNakyma(true);
+            tiedot.setItemValikko(true);
 
             this.naytaTeksti("   ");
             this.tutkiButton.setEnabled(false);
@@ -152,9 +152,9 @@ public class KayttoliittymanGrafiikka implements Serializable {
      * @param container joka sisältää pelin nykyisen graafisen esityksen
      */
     public void latausValikko(Container container) {
-        if (tiedot.valikkoNakyma()) {
+        if (tiedot.latausValikko()) {
             tiedot.paivita();
-            tiedot.setValikkoNakyma(false);
+            tiedot.setLatausValikko(false);
             tiedot.nayta();
 
             this.itemitButton.setEnabled(true);
@@ -171,7 +171,7 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
             JPanel tausta = this.haeUI(lp);
             container.add(tausta);
-            tiedot.setValikkoNakyma(true);
+            tiedot.setLatausValikko(true);
 
             this.naytaTeksti("   ");
             this.tutkiButton.setEnabled(false);
@@ -187,9 +187,9 @@ public class KayttoliittymanGrafiikka implements Serializable {
      * @param container joka sisältää pelin nykyisen graafisen esityksen
      */
     public void tallennusValikko(Container container) {
-        if (tiedot.valikkoNakyma()) {
+        if (tiedot.tallennusValikko()) {
             tiedot.paivita();
-            tiedot.setValikkoNakyma(false);
+            tiedot.setTallennusValikko(false);
             tiedot.nayta();
 
             this.itemitButton.setEnabled(true);
@@ -206,7 +206,7 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
             JPanel tausta = this.haeUI(tp);
             container.add(tausta);
-            tiedot.setValikkoNakyma(true);
+            tiedot.setTallennusValikko(true);
 
             this.naytaTeksti("   ");
             this.tutkiButton.setEnabled(false);

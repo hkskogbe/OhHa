@@ -54,8 +54,8 @@ public class Klikattava {
 
     /**
      *
-     * @return Palauttaa etäisyyden, jolla klikattavaa voi
-     * vielä klikata,  (x,y)-koordinaateista
+     * @return Palauttaa etäisyyden (x,y)-koordinaateista, jolla klikattavaa voi
+     * vielä klikata
      */
     public int getD() {
         return d;

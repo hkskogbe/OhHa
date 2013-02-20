@@ -21,7 +21,7 @@ public class ButtonLoadListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.tiedot.setLatausValikko(false);
+        this.tiedot.setValikkoNakyma(false);
         this.tiedot.lataa(latausSijainti);
     }
 }

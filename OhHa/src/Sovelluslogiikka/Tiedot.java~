@@ -37,7 +37,7 @@ public class Tiedot {
     private KayttoliittymanGrafiikka kayttiksenGrafiikka;
 
     /**
-     * Uuden Tiedot-olion luonti luo myös uuden käytössä olevan layoutin
+     * Uuden tiedot-luokan luonti luo myös uuden käytössä olevan layoutin
      * JFramella
      */
     public Tiedot() {
@@ -69,8 +69,7 @@ public class Tiedot {
     }
 
     /**
-     * Luo uuden tallennuksen sekä tavarat-listan. Asettaa sijainniksi A1 ja
-     * suunnaksi pohjoinen.
+     * Luo uuden pelin lataamatta tallennuksia
      *
      * @param container
      */
@@ -96,10 +95,8 @@ public class Tiedot {
         try {
             this.tallentaja = new Tallentaja(kohde);
             this.tallentaja.tallenna(tallennus, suunta, sijainti.toString(), tavarat);
-            this.kayttiksenGrafiikka.tallennusValikko(container);
-
         } catch (IOException ex) {
-            this.naytaTeksti("Error while saving");
+            System.out.println("Error while saving");
         }
     }
 
@@ -317,19 +314,36 @@ public class Tiedot {
     }
 
     /**
-     * Asettaa valikkoNakymassa boolean arvon
+     * Asettaa valikkonäkymään
      *
      * @param Valikkonäkymä, ollaanko nyt valikkonäkymässä
      */
-    public void setValikkoNakyma(boolean b) {
+    public void setItemValikko(boolean b) {
         this.valikkoNakymassa = b;
     }
 
     /**
-     * Tieto siitä, ollaanko nyt valikossa.
+     *
      * @return Valikkonäkymä, ollaanko nyt valikkonäkymässä
      */
-    public boolean valikkoNakyma() {
+    public boolean itemValikko() {
+        return valikkoNakymassa;
+    }
+
+    /**
+     * Asettaa valikkonäkymään
+     *
+     * @param Valikkonäkymä, ollaanko nyt valikkonäkymässä
+     */
+    public void setLatausValikko(boolean b) {
+        this.valikkoNakymassa = b;
+    }
+
+    /**
+     *
+     * @return Valikkonäkymä, ollaanko nyt valikkonäkymässä
+     */
+    public boolean latausValikko() {
         return valikkoNakymassa;
     }
 
@@ -339,6 +353,23 @@ public class Tiedot {
      */
     public Tavarat getTavarat() {
         return tavarat;
+    }
+
+    /**
+     *
+     * @return Valikkonäkymä, ollaanko nyt valikkonäkymässä
+     */
+    public boolean tallennusValikko() {
+        return valikkoNakymassa;
+    }
+
+    /**
+     * Asettaa valikkonäkymään
+     *
+     * @param Valikkonäkymä, ollaanko nyt valikkonäkymässä
+     */
+    public void setTallennusValikko(boolean b) {
+        this.valikkoNakymassa = b;
     }
 
     /**

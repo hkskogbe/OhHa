@@ -25,10 +25,7 @@ public class Tallentaja {
     }
 
     /**
-     * Tallentaa parametreina annetut tiedot tiedostoon. Tallennuksen
-     * ensimmäiselle riville tulee Suunta. Tämän alle liitetään merkintä
-     * tallennusajankohdasta. Tallennus-tiedoston arvot talletetaan muodossa
-     * nimi:arvo. Tavarat talletetaan muodossa -tavarannimi.
+     * Tallentaa parametreina annetut tiedot tiedostoon.
      *
      * @param tallennus
      * @param suunta
@@ -37,8 +34,6 @@ public class Tallentaja {
      * @throws IOException, jos tiedostopolku on virheellinen
      */
     public void tallenna(Tallennus tallennus, Suunta suunta, String sijainti, Tavarat tavarat) throws IOException {
-        
-        
         this.kirjoittaja = new FileWriter(this.save);
         kirjoittaja.write(suunta.toString() + "\n");
 

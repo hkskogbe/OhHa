@@ -65,7 +65,7 @@ public class TallennusPanel extends JPanel {
             t.setBackground(Color.black);
             t.setForeground(Color.white);
             t.addActionListener(new ButtonSaveListener(tiedot, "src/Tallennukset/" + o + ".txt"));
-            // joku erillinen new save -button tähän kohtaan mahdollisesti
+            // joku erillinen new save -buttoni olis jees
 
             this.add(t);
         }
