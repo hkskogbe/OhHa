@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,10 +27,12 @@ public class TallennusPanel extends JPanel {
      *
      * @param kansio, johon tallennustiedostot talletetaan
      */
-    public TallennusPanel(String kansio) {
+    public TallennusPanel(String kansio) throws URISyntaxException {
         this.setLayout(new GridLayout(10, 2));
         this.setBackground(Color.black);
-        File sijainti = new File(kansio);
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        File sijainti = new File(new File(url.toURI()).getParent() + kansio);
+
         this.tallennusLista = sijainti.listFiles();
     }
 
@@ -44,6 +48,10 @@ public class TallennusPanel extends JPanel {
         this.add(otsikko);
         this.add(new JLabel(" "));
 
+        if (tallennusLista == null) {
+            return;
+        }
+        
         for (File file : tallennusLista) {
             try {
                 this.scanner = new Scanner(file);
@@ -64,7 +72,7 @@ public class TallennusPanel extends JPanel {
             JButton t = new JButton(o + "   " + paivaysString);
             t.setBackground(Color.black);
             t.setForeground(Color.white);
-            t.addActionListener(new ButtonSaveListener(tiedot, "src/Tallennukset/" + o + ".txt"));
+            t.addActionListener(new ButtonSaveListener(tiedot, tiedot.getTallennusKansio() + o + ".txt"));
             // joku erillinen new save -button tähän kohtaan mahdollisesti
 
             this.add(t);

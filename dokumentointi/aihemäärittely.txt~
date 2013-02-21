@@ -1,9 +1,20 @@
-Aihe: Yksinkertainen point-and-click adventurepeli (Ensimm�isen persoonan kuvakulmasta Myst-pelien tyyliin)
+Aihemäärittely
 
-Tarkoituksena luoda lyhyt peli, jossa mahdollista liikkua ruuduittain ja tutkia ymp�rist��.
+Aihe:
+Yksinkertainen point-and-click adventurepeli (Ensimmäisen persoonan kuvakulmasta Myst-pelien tyyliin)
+
+Tarkoituksena luoda lyhyt peli (tai runko sellaiselle), jossa mahdollista liikkua ruuduittain ja tutkia ympäristöä.
 
 Tavoitteena:
-- mahdollisuus katsella ymp�rilleen (ruudussa voi k��nty� ja n�hd� eri n�kymi� (kuvia), mahdollisesti k��ntyminen sek� n�pp�imist�ll� ett� hiirell�)
-- luoda jonkinn�k�ist� interaktiivista tapahtumista pelaajan ja pelimaailman v�lill� (esineiden tai jonkin objektin k�ytt�minen)
-- klikattavia objekteja näytöllä
-- mahdollisuus tallentaa pelitilanne
+- Mahdollisuus katsella ympärilleen (ruudussa voi kääntyä ja nähdä eri näkymiä (kuvia))
+- Luoda jonkinnäköistä interaktiivista tapahtumista pelaajan ja pelimaailman välillä (esineiden tai jonkin objektin käyttäminen)
+- Klikattavia objekteja näytöllä
+- Mahdollisuus tallentaa ja ladata pelitilanne
+
+
+
+Rakennekuvaus
+
+Olennaisesti ohjelma rakentuu Sijainneista sekä tämänetkisestä tiedosta Tiedot-luokassa. Sijainnit määrittävät jokaisen yksittäisen "alueen" (eli yhden pisteen, josta pystyy katselemaan neljään suuntaan) kuvat sekä mahdollisuudet erilaisiin toimintoihin kyseisessä sijainnissa. Sijainnit tarkistavat Tallennus-tiedoston avulla pelimaailmassa jo tapahtuneet muutokset (esimerkiksi napin painaminen voisi tallentua Tallennukseen, ja tämä voisi mahdollistaa oven avaamisen).
+Sijainnit rakentuvat pitkälti Ruutu- sekä Nakyma-luokkien, jotka huolehtivat eri suuntien toiminnoista, varaan. Näkymiin liittyy myös Klikattava-olioita, jotka esittävät ruudulla mahdollisesti olevia klikattavia asioita. Tieto klikkauksesta siirtyy senhetkiselle Sijainnille, joka toteuttaa jonkin toiminnon (esittää tekstin yläpalkkiin, lisätä tavaran pelaajan reppuun, asettaa tallennukseen arvon yms.).
+Vastaavasti tavaroiden käyttäminen ilmoittaa Sijainnille, mikä tavara käytetään ja Sijainti toimii sen mukaisesti.

@@ -8,7 +8,11 @@ import Sovelluslogiikka.Tavarat.Tavarat;
 import Sovelluslogiikka.Tiedot;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Lataaja-luokka käsittelee tallennuksien lataamisen.
@@ -35,9 +39,8 @@ public class Lataaja {
      * @return Ladattu tallennus
      * @throws FileNotFoundException, jos tiedostopolku on virheellinen
      */
-    public Tallennus lataaTallennus() throws FileNotFoundException {
+    public Tallennus lataaTallennus() throws FileNotFoundException, URISyntaxException {
 
-        File s = new File(save);
         luoSkanneri();
 
 
@@ -158,6 +161,12 @@ public class Lataaja {
     }
 
     private void luoSkanneri() throws FileNotFoundException {
-        this.scanner = new Scanner(new File(save));
+        try {
+            URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+            String kansio = new File(url.toURI()).getParent();
+            this.scanner = new Scanner(new File(kansio + save));
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(Lataaja.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

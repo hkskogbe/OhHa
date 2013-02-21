@@ -12,6 +12,7 @@ import Sovelluslogiikka.Tiedostonkasittely.Tallentaja;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -43,7 +44,7 @@ public class Tiedot {
     public Tiedot() {
         this.cardlayout = new CardLayout();
         this.kayttiksenGrafiikka = new KayttoliittymanGrafiikka(this);
-        this.tallennusKansio = "src/Tallennukset/";
+        this.tallennusKansio = "/Tallennukset/";
     }
 
     /**
@@ -95,7 +96,11 @@ public class Tiedot {
     public void tallenna(String kohde) {
         try {
             this.tallentaja = new Tallentaja(kohde);
-            this.tallentaja.tallenna(tallennus, suunta, sijainti.toString(), tavarat);
+            try {
+                this.tallentaja.tallenna(tallennus, suunta, sijainti.toString(), tavarat);
+            } catch (URISyntaxException ex) {
+                this.naytaTeksti("Save file not found");
+            }
             this.kayttiksenGrafiikka.tallennusValikko(container);
 
         } catch (IOException ex) {

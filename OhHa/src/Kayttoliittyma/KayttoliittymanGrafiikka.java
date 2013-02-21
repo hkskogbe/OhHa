@@ -18,18 +18,17 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.Serializable;
+import java.net.URISyntaxException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 
 /**
  * Luo graafisen toteutuksen käyttöliittymän päätoiminnoille.
  *
  */
-public class KayttoliittymanGrafiikka implements Serializable {
+public class KayttoliittymanGrafiikka {
 
     private JButton itemitButton;
     private JButton tutkiButton;
@@ -38,7 +37,6 @@ public class KayttoliittymanGrafiikka implements Serializable {
     private JButton lataaButton;
     private JLabel ylapalkki;
     private Tiedot tiedot;
-    private JPopupMenu popup;
 
     public KayttoliittymanGrafiikka(Tiedot tiedot) {
         this.tiedot = tiedot;
@@ -164,20 +162,26 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
         } else {
 
-            LatausPanel lp = new LatausPanel(tiedot.getTallennusKansio());
-            lp.listaa(tiedot);
+            LatausPanel lp;
+            try {
+                lp = new LatausPanel(tiedot.getTallennusKansio());
+                lp.listaa(tiedot);
 
-            container.removeAll();
+                container.removeAll();
 
-            JPanel tausta = this.haeUI(lp);
-            container.add(tausta);
-            tiedot.setValikkoNakyma(true);
+                JPanel tausta = this.haeUI(lp);
+                container.add(tausta);
+                tiedot.setValikkoNakyma(true);
 
-            this.naytaTeksti("   ");
-            this.tutkiButton.setEnabled(false);
-            this.itemitButton.setEnabled(false);
-            this.tallennaButton.setEnabled(false);
-            this.eteneButton.setEnabled(false);
+                this.naytaTeksti("   ");
+                this.tutkiButton.setEnabled(false);
+                this.itemitButton.setEnabled(false);
+                this.tallennaButton.setEnabled(false);
+                this.eteneButton.setEnabled(false);
+            } catch (URISyntaxException ex) {
+                tiedot.naytaTeksti("Please make sure that the directory /Tallennukset exists.");
+            }
+
         }
     }
 
@@ -199,20 +203,26 @@ public class KayttoliittymanGrafiikka implements Serializable {
 
         } else {
 
-            TallennusPanel tp = new TallennusPanel(tiedot.getTallennusKansio());
-            tp.listaa(tiedot);
+            TallennusPanel tp;
+            try {
+                tp = new TallennusPanel(tiedot.getTallennusKansio());
+                tp.listaa(tiedot);
 
-            container.removeAll();
+                container.removeAll();
 
-            JPanel tausta = this.haeUI(tp);
-            container.add(tausta);
-            tiedot.setValikkoNakyma(true);
+                JPanel tausta = this.haeUI(tp);
+                container.add(tausta);
+                tiedot.setValikkoNakyma(true);
 
-            this.naytaTeksti("   ");
-            this.tutkiButton.setEnabled(false);
-            this.itemitButton.setEnabled(false);
-            this.lataaButton.setEnabled(false);
-            this.eteneButton.setEnabled(false);
+                this.naytaTeksti("   ");
+                this.tutkiButton.setEnabled(false);
+                this.itemitButton.setEnabled(false);
+                this.lataaButton.setEnabled(false);
+                this.eteneButton.setEnabled(false);
+            } catch (URISyntaxException ex) {
+                tiedot.naytaTeksti("Please make sure that the directory Tallennukset exists.");
+            }
+
         }
 
     }
@@ -252,24 +262,25 @@ public class KayttoliittymanGrafiikka implements Serializable {
         itemitButton.addActionListener(new ButtonItemsListener(tiedot));
         itemitButton.setBorderPainted(false);
 
-        this.tutkiButton = new JButton("Tutki");
+        this.tutkiButton = new JButton("Examine");
         tutkiButton.setBackground(Color.black);
         tutkiButton.setForeground(Color.white);
+        tutkiButton.setFocusable(false);
         tutkiButton.addActionListener(new ButtonExamineListener(tiedot));
         tutkiButton.setBorderPainted(false);
 
-        this.eteneButton = new JButton("Etene");
+        this.eteneButton = new JButton("Forward");
         eteneButton.setBackground(Color.black);
         eteneButton.setForeground(Color.white);
         eteneButton.addActionListener(new ButtonEteneListener(tiedot));
 
-        this.tallennaButton = new JButton("Tallenna");
+        this.tallennaButton = new JButton("Save");
         tallennaButton.setBackground(Color.black);
         tallennaButton.setForeground(Color.white);
         tallennaButton.setBorderPainted(false);
         tallennaButton.addActionListener(new ButtonSaveOptionsListener(tiedot));
 
-        this.lataaButton = new JButton("Lataa");
+        this.lataaButton = new JButton("Load");
         lataaButton.setBackground(Color.black);
         lataaButton.setForeground(Color.white);
         lataaButton.setBorderPainted(false);

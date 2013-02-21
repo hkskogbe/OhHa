@@ -1,13 +1,7 @@
 
 import Kayttoliittyma.Kayttoliittyma;
-import Sovelluslogiikka.Suunta;
-import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
-import Sovelluslogiikka.Tiedostonkasittely.Tallentaja;
-import Sovelluslogiikka.Tavarat.Tavarat;
 import Sovelluslogiikka.Tiedot;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.SwingUtilities;
 
 public class main {

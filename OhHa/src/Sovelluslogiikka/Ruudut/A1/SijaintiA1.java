@@ -69,7 +69,7 @@ public class SijaintiA1 implements Sijainti {
      * avulla
      */
     private void asetaKuvaukset() {
-        this.pohjoinen.setTeksti("You see a magical barrier of something.");
+        this.pohjoinen.setTeksti("You see a really cool invisible barrier.");
         this.etela.setTeksti("Seems you can click the white dot");
     }
 
@@ -95,7 +95,7 @@ public class SijaintiA1 implements Sijainti {
     @Override
     public void tutkiPohjoinen() {
         if (a1Switch()) {
-            tiedot.naytaTeksti("The barrier seems to have weakened");
+            tiedot.naytaTeksti("The no longer very cool barrier seems to be weaker than before");
         } else {
             tiedot.naytaTeksti(ruutu.getNakyma(Suunta.POHJOINEN).getTeksti());
         }
@@ -109,7 +109,7 @@ public class SijaintiA1 implements Sijainti {
     @Override
     public void tutkiEtela() {
         if (a1Switch()) {
-            tiedot.naytaTeksti("The switch has been activated.");
+            tiedot.naytaTeksti("Someone has clicked the dot...");
         } else {
             tiedot.naytaTeksti(ruutu.getNakyma(Suunta.ETELA).getTeksti());
         }
@@ -123,15 +123,21 @@ public class SijaintiA1 implements Sijainti {
     @Override
     public void klikkaa(Klikattava k) {
         if (k.getNimi().equals("wasd")) {
-            tiedot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
-            tiedot.lisaaItemReppuun("Uusi tavara");
+            if (tiedot.getTavarat().getTavarat().contains("Uusi tavara")) {
+                tiedot.naytaTeksti("Repussasi oleva tavara monistui yllättäen");
+                tiedot.lisaaItemReppuun("Uusi tavara");
+            } else {
+                tiedot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
+                tiedot.lisaaItemReppuun("Uusi tavara");
+            
+            }
         }
         if (k.getNimi().equals("a1switch")) {
             if (a1Switch()) {
-                tiedot.naytaTeksti("You've already used the switch");
+                tiedot.naytaTeksti("You've already clicked the dot, you shouldn't do that too often.");
             } else {
                 tallennus.setTrue("a1switch");
-                tiedot.naytaTeksti("You hear something nearby");
+                tiedot.naytaTeksti("You hear the sound of a button behind you becoming clickable");
             }
         }
     }

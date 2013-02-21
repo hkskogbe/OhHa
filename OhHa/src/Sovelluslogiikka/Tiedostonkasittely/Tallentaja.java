@@ -2,8 +2,11 @@ package Sovelluslogiikka.Tiedostonkasittely;
 
 import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tavarat.Tavarat;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Calendar;
 
 /**
@@ -36,10 +39,12 @@ public class Tallentaja {
      * @param tavarat
      * @throws IOException, jos tiedostopolku on virheellinen
      */
-    public void tallenna(Tallennus tallennus, Suunta suunta, String sijainti, Tavarat tavarat) throws IOException {
+    public void tallenna(Tallennus tallennus, Suunta suunta, String sijainti, Tavarat tavarat) throws IOException, URISyntaxException {
         
-        
-        this.kirjoittaja = new FileWriter(this.save);
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        String kansio = new File(url.toURI()).getParent();
+            
+        this.kirjoittaja = new FileWriter(kansio + this.save);
         kirjoittaja.write(suunta.toString() + "\n");
 
         kirjoittaja.write(Calendar.getInstance().getTime().toString() + "\n");

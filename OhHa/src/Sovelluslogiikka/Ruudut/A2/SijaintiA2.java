@@ -94,6 +94,7 @@ public class SijaintiA2 implements Sijainti {
 
     @Override
     public void kaytaItem(String item) {
+        tiedot.naytaTeksti("There's a time and place for everything, but not now!");
     }
 
     @Override

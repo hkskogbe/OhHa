@@ -48,3 +48,8 @@ Tallentaminen .jarissa ei toimi atm, refaktorointia, 4h
 19-20.2.
 Refaktorointia, esim. valikkonäkymä-boolean-arvojen yhdistäminen yhdeksi metodiksi, 4h
 
+20.2.
+Lataaminen/tallentaminen toimii .jarissa, ei Netbeansissa :D, 2-3h
+
+
+

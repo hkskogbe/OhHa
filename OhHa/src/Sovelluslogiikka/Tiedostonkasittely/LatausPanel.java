@@ -6,7 +6,11 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,10 +30,12 @@ public class LatausPanel extends JPanel {
      *
      * @param kansio, jossa olevia tiedostoja luetaan
      */
-    public LatausPanel(String kansio) {
+    public LatausPanel(String kansio) throws URISyntaxException {
         this.setLayout(new GridLayout(10, 2));
         this.setBackground(Color.black);
-        File sijainti = new File(kansio);
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        File sijainti = new File(new File(url.toURI()).getParent() + kansio);
+
         this.tallennusLista = sijainti.listFiles();
     }
 
@@ -47,6 +53,10 @@ public class LatausPanel extends JPanel {
         JLabel tyhja = new JLabel(" ");
         this.add(tyhja);
 
+        if (tallennusLista == null) {
+            return;
+        }
+        
         for (File file : tallennusLista) {
             try {
                 this.scanner = new Scanner(file);
