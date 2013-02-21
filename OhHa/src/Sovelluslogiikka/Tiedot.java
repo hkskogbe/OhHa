@@ -19,8 +19,8 @@ public class Tiedot {
     public Tiedot() {
         this.tallennusKansio = "/Tallennukset/";
     }
-/**
-     * Palauttaa kansion, jossa tallenukset sijaitsevat.
+    /**
+     * Palauttaa kansion, jossa tallennukset sijaitsevat.
      *
      * @return
      */
