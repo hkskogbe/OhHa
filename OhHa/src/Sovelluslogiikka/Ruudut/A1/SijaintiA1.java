@@ -7,7 +7,8 @@ import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
+import Sovelluslogiikka.Tavarat.Tavarat;
 import javax.swing.ImageIcon;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.ImageIcon;
  */
 public class SijaintiA1 implements Sijainti {
 
-    private Tiedot tiedot;
+    private Toiminnot toiminnot;
     private Tallennus tallennus;
     private Ruutu ruutu;
     private Nakyma pohjoinen;
@@ -24,8 +25,8 @@ public class SijaintiA1 implements Sijainti {
     private Nakyma etela;
     private Nakyma lansi;
 
-    public SijaintiA1(Tiedot tiedot) {
-        this.tiedot = tiedot;
+    public SijaintiA1(Toiminnot tiedot) {
+        this.toiminnot = tiedot;
         this.tallennus = tiedot.getTallennus();
 
         pohjoinen = new Nakyma(new ImageIcon(getClass().getResource("kuvat/A1pohjoinen.jpg")));
@@ -43,7 +44,7 @@ public class SijaintiA1 implements Sijainti {
     public Sijainti liiku(Suunta suunta) {
         if (suunta == Suunta.POHJOINEN) {
             if (a1Switch()) {
-                return new SijaintiA2(tiedot);
+                return new SijaintiA2(toiminnot);
             } else {
                 return null;
             }
@@ -95,49 +96,49 @@ public class SijaintiA1 implements Sijainti {
     @Override
     public void tutkiPohjoinen() {
         if (a1Switch()) {
-            tiedot.naytaTeksti("The no longer very cool barrier seems to be weaker than before");
+            toiminnot.naytaTeksti("The no longer very cool barrier seems to be weaker than before");
         } else {
-            tiedot.naytaTeksti(ruutu.getNakyma(Suunta.POHJOINEN).getTeksti());
+            toiminnot.naytaTeksti(ruutu.getNakyma(Suunta.POHJOINEN).getTeksti());
         }
     }
 
     @Override
     public void tutkiIta() {
-        tiedot.naytaTeksti(ruutu.getNakyma(Suunta.ITA).getTeksti());
+        toiminnot.naytaTeksti(ruutu.getNakyma(Suunta.ITA).getTeksti());
     }
 
     @Override
     public void tutkiEtela() {
         if (a1Switch()) {
-            tiedot.naytaTeksti("Someone has clicked the dot...");
+            toiminnot.naytaTeksti("Someone has clicked the dot...");
         } else {
-            tiedot.naytaTeksti(ruutu.getNakyma(Suunta.ETELA).getTeksti());
+            toiminnot.naytaTeksti(ruutu.getNakyma(Suunta.ETELA).getTeksti());
         }
     }
 
     @Override
     public void tutkiLansi() {
-        tiedot.naytaTeksti(ruutu.getNakyma(Suunta.LANSI).getTeksti());
+        toiminnot.naytaTeksti(ruutu.getNakyma(Suunta.LANSI).getTeksti());
     }
 
     @Override
-    public void klikkaa(Klikattava k) {
+    public void klikkaa(Tavarat tavarat, Klikattava k) {
         if (k.getNimi().equals("wasd")) {
-            if (tiedot.getTavarat().getTavarat().contains("Uusi tavara")) {
-                tiedot.naytaTeksti("Repussasi oleva tavara monistui yllättäen");
-                tiedot.lisaaItemReppuun("Uusi tavara");
+            if (tavarat.getTavarat().contains("Uusi tavara")) {
+                toiminnot.naytaTeksti("Repussasi oleva tavara monistui yllättäen");
+                toiminnot.lisaaItemReppuun("Uusi tavara");
             } else {
-                tiedot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
-                tiedot.lisaaItemReppuun("Uusi tavara");
+                toiminnot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
+                toiminnot.lisaaItemReppuun("Uusi tavara");
             
             }
         }
         if (k.getNimi().equals("a1switch")) {
             if (a1Switch()) {
-                tiedot.naytaTeksti("You've already clicked the dot, you shouldn't do that too often.");
+                toiminnot.naytaTeksti("You've already clicked the dot, you shouldn't do that too often.");
             } else {
                 tallennus.setTrue("a1switch");
-                tiedot.naytaTeksti("You hear the sound of a button behind you becoming clickable");
+                toiminnot.naytaTeksti("You hear the sound of a button behind you becoming clickable");
             }
         }
     }
@@ -147,10 +148,10 @@ public class SijaintiA1 implements Sijainti {
     }
 
     @Override
-    public void kaytaItem(String item) {
-        if (item.equals("jotain") && tiedot.getSuunta() == Suunta.LANSI) {
+    public void kaytaItem(Suunta suunta, String item) {
+        if (item.equals("jotain") && suunta == Suunta.LANSI) {
         } else {
-            tiedot.naytaTeksti("There's a time and place for everything, but not now!");
+            toiminnot.naytaTeksti("There's a time and place for everything, but not now!");
         }
     }
 }

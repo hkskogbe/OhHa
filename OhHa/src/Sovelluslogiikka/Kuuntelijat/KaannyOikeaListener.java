@@ -1,6 +1,6 @@
 package Sovelluslogiikka.Kuuntelijat;
 
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
  */
 public class KaannyOikeaListener implements ActionListener {
 
-    private Tiedot tiedot;
+    private Toiminnot tiedot;
 
-    public KaannyOikeaListener(Tiedot tiedot) {
+    public KaannyOikeaListener(Toiminnot tiedot) {
         this.tiedot = tiedot;
     }
 

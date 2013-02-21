@@ -1,6 +1,6 @@
 package Sovelluslogiikka.Tavarat;
 
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,9 +12,9 @@ import java.awt.event.ActionListener;
 public class ItemListListener implements ActionListener {
 
     private String tavara;
-    private Tiedot tiedot;
+    private Toiminnot tiedot;
 
-    public ItemListListener(Tiedot tiedot, String tavara) {
+    public ItemListListener(Toiminnot tiedot, String tavara) {
         this.tavara = tavara;
         this.tiedot = tiedot;
     }

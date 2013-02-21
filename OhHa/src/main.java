@@ -1,6 +1,6 @@
 
 import Kayttoliittyma.Kayttoliittyma;
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.io.IOException;
 import javax.swing.SwingUtilities;
 
@@ -8,7 +8,7 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-        Tiedot lataaja = new Tiedot();
+        Toiminnot lataaja = new Toiminnot();
 
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lataaja);
         SwingUtilities.invokeLater(kayttoliittyma);

@@ -1,7 +1,7 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
 import Sovelluslogiikka.Kuuntelijat.ButtonLoadListener;
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.File;
@@ -44,7 +44,7 @@ public class LatausPanel extends JPanel {
      *
      * @param tiedot
      */
-    public void listaa(Tiedot tiedot) {
+    public void listaa(Toiminnot tiedot) {
 
         JLabel otsikko = new JLabel("Choose file to load");
         otsikko.setForeground(Color.white);

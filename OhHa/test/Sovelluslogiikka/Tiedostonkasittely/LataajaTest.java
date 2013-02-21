@@ -36,7 +36,7 @@ public class LataajaTest {
         this.l = new Lataaja("sijainti ei olekaan sijainti");
         try {
             l.lataaTallennus();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }

@@ -1,6 +1,5 @@
 package Kayttoliittyma;
 
-import Sovelluslogiikka.Tiedot;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -14,14 +13,14 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Container container;
-    private Tiedot tiedot;
+    private Toiminnot tiedot;
 
     /**
      * Luo uuden käyttöliittymän
      *
      * @param tiedot
      */
-    public Kayttoliittyma(Tiedot tiedot) {
+    public Kayttoliittyma(Toiminnot tiedot) {
         this.tiedot = tiedot;
     }
 
@@ -39,7 +38,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Kutsuu Tiedot-luokan metodia luomaan pelin ensimmäisen alueen
+     * Kutsuu Toiminnot-luokan metodia luomaan pelin ensimmäisen alueen
      */
     public void lataaPeli() {
         this.tiedot.lataaUusiPeli(frame.getContentPane());

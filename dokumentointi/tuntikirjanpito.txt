@@ -22,10 +22,10 @@ Muutamia tunteja (3-5) koodailua
 1-2 tuntia refaktorointia ja testej‰
 
 29.1.
-Graafista ulkoasua paranneltu, uusi luokka lataamista varten
+Graafista ulkoasua paranneltu, uusi luokka lataamista varten 3h
 
 1-2.2.
-Ruudulla klikkaaminen toimii jotenkin
+Ruudulla klikkaaminen toimii jotenkin 2h
 
 3.2.
 Klikkauksen hienos‰‰tˆ‰, javadocs, item-valikko, turhaksi tulleen k‰yt‰-toiminnon poistaminen, 5 tuntia
@@ -37,7 +37,7 @@ Lataaminen/tallentaminen pelaa, joku 5 tuntia
 Lataus- ja tallennusvalikot luotu, lataaminen kansiossa olevista tiedostoista toimii, tallentaminen ei ihan viel‰, 2 tuntia
 
 9.2.
-Tallentaminen jo olemassaoleviin tiedostoihin toimii, junit testej‰
+Tallentaminen jo olemassaoleviin tiedostoihin toimii, junit testej‰ 2h
 
 10-12.2.
 Junit, javadoc, 6-7h
@@ -51,5 +51,6 @@ Refaktorointia, esim. valikkon‰kym‰-boolean-arvojen yhdist‰minen yhdeksi metodik
 20.2.
 Lataaminen/tallentaminen toimii .jarissa, ei Netbeansissa :D, 2-3h
 
-
+21.2.
+Toiminnot-luokka korvaa Tiedot-luokan ylim‰‰r‰isi‰ toimintoja, 2h
 

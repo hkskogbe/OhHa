@@ -1,5 +1,6 @@
 package Sovelluslogiikka.Ruudut;
 
+import Kayttoliittyma.Toiminnot;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -14,15 +15,18 @@ public class KlikattavienHiiriKuuntelija implements MouseListener {
 
     private ArrayList<Klikattava> klikattavat;
     private Sijainti sijainti;
+    private Toiminnot toiminnot;
 
     /**
      *
      * @param sijainti
      * @param klikattavat
+     *  @param toiminnot
      */
-    public KlikattavienHiiriKuuntelija(Sijainti sijainti, ArrayList<Klikattava> klikattavat) {
+    public KlikattavienHiiriKuuntelija(Toiminnot toiminnot, Sijainti sijainti, ArrayList<Klikattava> klikattavat) {
         this.sijainti = sijainti;
         this.klikattavat = klikattavat;
+        this.toiminnot = toiminnot;
     }
 
     /**
@@ -36,7 +40,7 @@ public class KlikattavienHiiriKuuntelija implements MouseListener {
 
             // Jos halutaan käsitellä etäisyyttä k.getD() ympyränmuotoisena säteenä jostakin pisteestä
             if (Math.hypot(e.getX() - k.getX(), e.getY() - k.getY()) < k.getD()) {
-                sijainti.klikkaa(k);
+                toiminnot.klikkaa(k);
             }
 
             // Jos taas halutaan käsitellä k.getD():tä neliönmallisena

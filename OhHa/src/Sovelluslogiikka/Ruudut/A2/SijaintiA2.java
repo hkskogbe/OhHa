@@ -1,13 +1,14 @@
 package Sovelluslogiikka.Ruudut.A2;
 
+import Kayttoliittyma.Toiminnot;
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.Klikattava;
 import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
+import Sovelluslogiikka.Tavarat.Tavarat;
 import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
-import Sovelluslogiikka.Tiedot;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.ImageIcon;
  */
 public class SijaintiA2 implements Sijainti {
 
-    private Tiedot tiedot;
+    private Toiminnot tiedot;
     private Tallennus tallennus;
     private Ruutu ruutu;
     private Nakyma pohjoinen;
@@ -25,7 +26,7 @@ public class SijaintiA2 implements Sijainti {
     private Nakyma etela;
     private Nakyma lansi;
 
-    public SijaintiA2(Tiedot tiedot) {
+    public SijaintiA2(Toiminnot tiedot) {
         this.tiedot = tiedot;
         this.tallennus = tiedot.getTallennus();
 
@@ -89,15 +90,15 @@ public class SijaintiA2 implements Sijainti {
     }
 
     @Override
-    public void klikkaa(Klikattava k) {
-    }
-
-    @Override
-    public void kaytaItem(String item) {
-        tiedot.naytaTeksti("There's a time and place for everything, but not now!");
-    }
-
-    @Override
     public void luoKlikattavat() {
+    }
+
+    @Override
+    public void klikkaa(Tavarat tavarat, Klikattava klikattava) {
+    }
+
+    @Override
+    public void kaytaItem(Suunta suunta, String item) {
+        tiedot.naytaTeksti("There's a time and place for everything, but not now!");
     }
 }

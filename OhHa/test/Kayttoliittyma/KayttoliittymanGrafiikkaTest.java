@@ -4,17 +4,15 @@
  */
 package Kayttoliittyma;
 
-import Sovelluslogiikka.Tiedot;
-import java.awt.Component;
+import Sovelluslogiikka.Tavarat.Tavarat;
 import java.awt.Container;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -24,7 +22,8 @@ public class KayttoliittymanGrafiikkaTest {
 
     KayttoliittymanGrafiikka x;
     Container c;
-    Tiedot t;
+    Toiminnot t;
+    Tavarat i;
 
     public KayttoliittymanGrafiikkaTest() {
     }
@@ -40,10 +39,11 @@ public class KayttoliittymanGrafiikkaTest {
     @Before
     public void setUp() {
         c = new Container();
-        t = new Tiedot();
+        t = new Toiminnot();
         t.lataaUusiPeli(c);
         x = new KayttoliittymanGrafiikka(t);
         x.haeUI(new JPanel());
+        i = new Tavarat();
 
     }
 
@@ -53,7 +53,7 @@ public class KayttoliittymanGrafiikkaTest {
 
     @Test
     public void itemIkkunaDisableeButtonitOikein() {
-        x.itemValikko(c);
+        x.itemValikko(i,c);
         assertFalse(x.getLataaButton().isEnabled());
     }
 
@@ -64,8 +64,8 @@ public class KayttoliittymanGrafiikkaTest {
 
     @Test
     public void itemIkkunaPoistaaNappuloidenDisableuksen() {
-        x.itemValikko(c);
-        x.itemValikko(c);
+        x.itemValikko(i,c);
+        x.itemValikko(i,c);
         assertTrue(x.getLataaButton().isEnabled());
     }
 

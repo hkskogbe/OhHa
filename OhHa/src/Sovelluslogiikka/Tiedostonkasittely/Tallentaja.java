@@ -24,7 +24,10 @@ public class Tallentaja {
      * @param Tallennustiedoston nimi
      */
     public Tallentaja(String save) {
-        this.save = save;
+        if (kirjoitusMuotoOnOikein(save)) {
+            this.save = save;
+        }
+            this.save = null;
     }
 
     /**
@@ -40,10 +43,10 @@ public class Tallentaja {
      * @throws IOException, jos tiedostopolku on virheellinen
      */
     public void tallenna(Tallennus tallennus, Suunta suunta, String sijainti, Tavarat tavarat) throws IOException, URISyntaxException {
-        
+
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
         String kansio = new File(url.toURI()).getParent();
-            
+
         this.kirjoittaja = new FileWriter(kansio + this.save);
         kirjoittaja.write(suunta.toString() + "\n");
 

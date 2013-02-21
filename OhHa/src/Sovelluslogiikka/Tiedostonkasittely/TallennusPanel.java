@@ -1,7 +1,7 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
+import Kayttoliittyma.Toiminnot;
 import Sovelluslogiikka.Kuuntelijat.ButtonSaveListener;
-import Sovelluslogiikka.Tiedot;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.File;
@@ -40,9 +40,9 @@ public class TallennusPanel extends JPanel {
      * Listaa TallennusPaneliin jo olemassaolevat tallennustiedostot
      * klikattavina JButtoneina
      *
-     * @param tiedot
+     * @param toiminnot
      */
-    public void listaa(Tiedot tiedot) {
+    public void listaa(Toiminnot toiminnot, String tallennuskansio) {
         JLabel otsikko = new JLabel("Choose file to overwrite");
         otsikko.setForeground(Color.white);
         this.add(otsikko);
@@ -72,7 +72,7 @@ public class TallennusPanel extends JPanel {
             JButton t = new JButton(o + "   " + paivaysString);
             t.setBackground(Color.black);
             t.setForeground(Color.white);
-            t.addActionListener(new ButtonSaveListener(tiedot, tiedot.getTallennusKansio() + o + ".txt"));
+            t.addActionListener(new ButtonSaveListener(toiminnot, tallennuskansio + o + ".txt"));
             // joku erillinen new save -button tähän kohtaan mahdollisesti
 
             this.add(t);

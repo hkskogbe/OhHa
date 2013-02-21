@@ -1,6 +1,6 @@
 package Sovelluslogiikka.Tavarat;
 
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -35,7 +35,7 @@ public class TavaratPanel extends JPanel {
      *
      * @param tiedot
      */
-    public void listaa(Tiedot tiedot) {
+    public void listaa(Toiminnot tiedot) {
         JLabel otsikko = new JLabel("Items in your inventory");
         otsikko.setForeground(Color.white);
         this.add(otsikko);

@@ -15,7 +15,7 @@ Tavoitteena:
 
 Rakennekuvaus
 
-Olennaisesti ohjelma rakentuu Sijainneista sekä tämänhetkisistä tiedoista Tiedot-luokassa. Sijainnit määrittävät jokaisen yksittäisen "alueen" (eli yhden pisteen, josta pystyy katselemaan neljään suuntaan) kuvat sekä mahdollisuudet erilaisiin toimintoihin kyseisessä sijainnissa. Sijainnit tarkistavat Tallennus-tiedoston avulla pelimaailmassa jo tapahtuneet muutokset (esimerkiksi eräässä huoneessa olevan napin painaminen voisi tallentua Tallennukseen, ja tämä voisi mahdollistaa oven avaamisen jossakin toisessa huoneessa).
+Olennaisesti ohjelma rakentuu Sijainneista sekä tämänhetkisistä tiedoista Tiedot-luokassa. Tiedot-olion tietoja käsitellään Toiminnot-luokan kautta. Sijainnit määrittävät jokaisen yksittäisen "alueen" (eli yhden pisteen, josta pystyy katselemaan neljään suuntaan) kuvat sekä mahdollisuudet erilaisiin toimintoihin kyseisessä sijainnissa. Sijainnit tarkistavat Tallennus-tiedoston avulla pelimaailmassa jo tapahtuneet muutokset (esimerkiksi eräässä huoneessa olevan napin painaminen voisi tallentua Tallennukseen, ja tämä voisi mahdollistaa oven avaamisen jossakin toisessa huoneessa).
 
 Sijainnit rakentuvat pitkälti Ruutu- sekä Nakyma-luokkien, jotka huolehtivat eri suuntien toiminnoista, varaan. Näkymiin liittyy myös Klikattava-olioita, jotka esittävät ruudulla mahdollisesti olevia klikattavia asioita. Tieto klikkauksesta siirtyy senhetkiselle Sijainnille, joka toteuttaa jonkin toiminnon (esittää tekstin yläpalkkiin, lisätä tavaran pelaajan reppuun, asettaa tallennukseen arvon yms.).
 

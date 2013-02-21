@@ -5,7 +5,7 @@ import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tavarat.Tavarat;
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
@@ -113,7 +113,7 @@ public class Lataaja {
      * @return Palauttaa uuden sijainnin
      * @throws FileNotFoundException, jos tiedostopolku on virheellinen
      */
-    public Sijainti lataaSijainti(Tiedot tiedot) throws FileNotFoundException {
+    public Sijainti lataaSijainti(Toiminnot tiedot) throws FileNotFoundException {
         luoSkanneri();
 
         String sijaintiString = "";
@@ -138,7 +138,7 @@ public class Lataaja {
      * @param tiedot
      * @return Sijainti Sijainti-oliona
      */
-    private Sijainti etsiSijaintiStringinPerusteella(String sijaintiString, Tiedot tiedot) {
+    private Sijainti etsiSijaintiStringinPerusteella(String sijaintiString, Toiminnot tiedot) {
         sijaintiString = sijaintiString.substring(24);
         String sijainti = "";
 

@@ -1,6 +1,7 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
 import Sovelluslogiikka.Suunta;
+import java.io.File;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;

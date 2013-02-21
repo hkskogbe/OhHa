@@ -4,7 +4,7 @@
  */
 package Sovelluslogiikka.Kuuntelijat;
 
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,10 +14,10 @@ import java.awt.event.ActionListener;
  */
 public class ButtonSaveListener implements ActionListener {
 
-    private Tiedot tiedot;
+    private Toiminnot tiedot;
     private String kohde;
 
-    public ButtonSaveListener(Tiedot tiedot, String kohde) {
+    public ButtonSaveListener(Toiminnot tiedot, String kohde) {
         this.tiedot = tiedot;
         this.kohde = kohde;
     }

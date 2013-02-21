@@ -1,6 +1,7 @@
 package Sovelluslogiikka.Ruudut;
 
 import Sovelluslogiikka.Suunta;
+import Sovelluslogiikka.Tavarat.Tavarat;
 
 /**
  * Sijainti luo ja sisältää yksittäisen alueen tiedot ja tapahtumat.
@@ -38,8 +39,9 @@ public interface Sijainti {
      * Suorittaa parametrina saatavan klikattava-olion pohjalta jonkin toiminnon
      *
      * @param klikattava
+     * @param tavarat 
      */
-    public void klikkaa(Klikattava klikattava);
+    public void klikkaa(Tavarat tavarat, Klikattava klikattava);
 
     /**
      * Luo jokaiselle näkymälle klikattava-oliot
@@ -51,5 +53,5 @@ public interface Sijainti {
      *
      * @param Tavara, jota halutaan käyttää
      */
-    public void kaytaItem(String item);
+    public void kaytaItem(Suunta suunta, String item);
 }

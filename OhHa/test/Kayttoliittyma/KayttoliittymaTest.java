@@ -14,17 +14,19 @@ import static org.junit.Assert.*;
 
 public class KayttoliittymaTest {
 
-    Tiedot tiedot;
+    Toiminnot toiminnot;
     Kayttoliittyma k;
+    Tiedot tiedot;
 
     public KayttoliittymaTest() {
     }
 
     @Before
     public void setUp() {
-        tiedot = new Tiedot();
-        k = new Kayttoliittyma(tiedot);
-        tiedot.lataaUusiPeli(new Container());
+        toiminnot = new Toiminnot();
+        tiedot = toiminnot.getTiedot();
+        k = new Kayttoliittyma(toiminnot);
+        toiminnot.lataaUusiPeli(new Container());
     }
 
     @After

@@ -4,7 +4,7 @@
  */
 package Sovelluslogiikka.Kuuntelijat;
 
-import Sovelluslogiikka.Tiedot;
+import Kayttoliittyma.Toiminnot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPopupMenu;
@@ -15,10 +15,10 @@ import javax.swing.JPopupMenu;
  */
 public class ButtonLoadOptionsListener implements ActionListener {
 
-    private Tiedot tiedot;
+    private Toiminnot tiedot;
     private JPopupMenu popup;
     
-    public ButtonLoadOptionsListener(Tiedot tiedot) {
+    public ButtonLoadOptionsListener(Toiminnot tiedot) {
         this.tiedot = tiedot;
     }
 
