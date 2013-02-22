@@ -53,6 +53,7 @@ public class KayttoliittymanGrafiikka {
         tausta.setBackground(Color.black);
 
         JPanel alaosa = new JPanel(new GridLayout(1, 5));
+        alaosa.setBackground(Color.black);
         JPanel ylaosa = new JPanel(new GridLayout());
         ylaosa.setBackground(Color.black);
 
@@ -243,10 +244,6 @@ public class KayttoliittymanGrafiikka {
      */
     public String getYlaPalkinText() {
         return this.ylapalkki.getText();
-    }
-
-    JLabel getYlapalkki() {
-        return this.ylapalkki;
     }
 
     JButton getLataaButton() {

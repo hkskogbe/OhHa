@@ -1,6 +1,6 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
-import java.io.FileNotFoundException;
+import javax.swing.JPanel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,36 +8,35 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LataajaTest {
-
-    private Lataaja l;
-
-    public LataajaTest() {
+public class TallennusPanelTest {
+    
+    public TallennusPanelTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void testaaUusiLataajaVirheellisellaTiedostoSijainnillaMetoditHeittavatFileNotFoundExceptionin() {
-        this.l = new Lataaja("sijainti ei olekaan sijainti");
+    public void testaaVirheellisellaTiedostollaEttaTallennusPanelToimiiOikeinEikaKaadu() {
+        JPanel testipanel = null;
         try {
-            l.lataaTallennus();
-            fail("Lataaja ei heitä virhettä virheellisellä sijainnilla");
+            testipanel = new TallennusPanel("huono sijainti");
         } catch (Exception e) {
+            new AssertionError(testipanel);
+            fail("Ei kuuluisi heittää exceptionia");
         }
     }
 }

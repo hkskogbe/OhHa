@@ -1,11 +1,13 @@
-package Sovelluslogiikka;
+package Kayttoliittyma;
 
 
 import Kayttoliittyma.Toiminnot;
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Sijainti;
+import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
+import Sovelluslogiikka.Tiedot;
 import java.awt.Container;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -58,6 +60,11 @@ public class ToiminnotTest {
         this.toiminnot.kaanny(false);
         this.toiminnot.kaanny(false);
         assertEquals(Suunta.ITA, this.tiedot.getSuunta());
+    }
+    
+    @Test
+    public void eiOleSeuraavaaRuutuLiikuttaessaEteenpainLahtoruudusta() {
+        assertFalse(this.toiminnot.onSeuraavaRuutu());
     }
 
     @Test

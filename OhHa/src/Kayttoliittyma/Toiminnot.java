@@ -113,7 +113,7 @@ public class Toiminnot {
      *
      * @return onko eteenpäin liikuttaessa ruutua
      */
-    private boolean onSeuraavaRuutu() {
+    boolean onSeuraavaRuutu() {
         Sijainti onko = this.tiedot.getSijainti().liiku(this.tiedot.getSuunta());
         return (onko != null ? true : false);
     }
@@ -213,21 +213,6 @@ public class Toiminnot {
         this.kayttiksenGrafiikka.paivitaButtonit(this.onSeuraavaRuutu(), tiedot.getRuutu(), tiedot.getSuunta());
     }
 
-    /**
-     *
-     * @return Palauttaa tämänhetkisen suunnan
-     */
-//    public Suunta getSuunta() {
-//        return this.tiedot.;
-//    }
-
-    /**
-     *
-     * @return Palauttaa tämänhetkisen ruudun
-     */
-//    public Ruutu getRuutu() {
-//        return this.ruutu;
-//    }
 
     /**
      * Asettaa pelille sijainniksi parametreina saatavan uuden sijainnin
@@ -238,14 +223,6 @@ public class Toiminnot {
 //    public void setSijainti(Sijainti uusiSijainti, Suunta suunta) {
 //        this.sijainti = uusiSijainti;
 //        this.suunta = suunta;
-//    }
-
-    /**
-     *
-     * @return Palauttaa nykyisen sijainnin
-     */
-//    public Sijainti getSijainti() {
-//        return this.sijainti;
 //    }
 
     /**

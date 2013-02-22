@@ -1,7 +1,7 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
-import Sovelluslogiikka.Kuuntelijat.ButtonLoadListener;
 import Kayttoliittyma.Toiminnot;
+import Sovelluslogiikka.Kuuntelijat.ButtonLoadListener;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.File;
@@ -9,8 +9,6 @@ import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,9 +40,9 @@ public class LatausPanel extends JPanel {
     /**
      * Lisää kansiossa olevat ladattavat tiedostot listaksi JButtoneja
      *
-     * @param tiedot
+     * @param toiminnot
      */
-    public void listaa(Toiminnot tiedot) {
+    public void listaa(Toiminnot toiminnot) {
 
         JLabel otsikko = new JLabel("Choose file to load");
         otsikko.setForeground(Color.white);
@@ -80,7 +78,7 @@ public class LatausPanel extends JPanel {
 
                 t.setBackground(Color.black);
                 t.setForeground(Color.white);
-                t.addActionListener(new ButtonLoadListener(tiedot, filenNimi + ".txt"));
+                t.addActionListener(new ButtonLoadListener(toiminnot, filenNimi + ".txt"));
                 this.add(t);
             }
         }

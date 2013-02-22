@@ -1,14 +1,14 @@
 package Sovelluslogiikka.Ruudut.A1;
 
+import Kayttoliittyma.Toiminnot;
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Klikattava;
 import Sovelluslogiikka.Ruudut.Nakyma;
 import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
-import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
-import Kayttoliittyma.Toiminnot;
 import Sovelluslogiikka.Tavarat.Tavarat;
+import Sovelluslogiikka.Tiedostonkasittely.Tallennus;
 import javax.swing.ImageIcon;
 
 /**

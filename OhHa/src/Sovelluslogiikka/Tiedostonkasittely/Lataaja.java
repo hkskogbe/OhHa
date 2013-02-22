@@ -1,11 +1,11 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
+import Kayttoliittyma.Toiminnot;
 import Sovelluslogiikka.Ruudut.A1.SijaintiA1;
 import Sovelluslogiikka.Ruudut.A2.SijaintiA2;
 import Sovelluslogiikka.Ruudut.Sijainti;
 import Sovelluslogiikka.Suunta;
 import Sovelluslogiikka.Tavarat.Tavarat;
-import Kayttoliittyma.Toiminnot;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
@@ -150,7 +150,7 @@ public class Lataaja {
             sijainti += a;
         }
 
-        // Tähän manuaalisesti kaikki sijainnit...
+        // Tähän toistaiseksi manuaalisesti kaikki sijainnit...
         if (sijainti.equals("A1")) {
             return new SijaintiA1(tiedot);
         } else if (sijainti.equals("A2")) {

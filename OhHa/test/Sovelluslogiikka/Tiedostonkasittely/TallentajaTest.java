@@ -1,8 +1,6 @@
 package Sovelluslogiikka.Tiedostonkasittely;
 
 import Sovelluslogiikka.Suunta;
-import java.io.File;
-import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -58,9 +56,8 @@ public class TallentajaTest {
     public void tallentajaHeittaaVirheenJosSijaintiHuono() {
         try {
             t.tallenna(null, Suunta.ITA, "no ei tää kyl oo sijainti", null);
-            throw new AssertionError(t);
+            fail("Tallentaminen 'onnistui' virheellisellä sijainnilla");
         } catch (Exception e) {
-            assertTrue(true);
         }
     
     }

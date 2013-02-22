@@ -33,9 +33,9 @@ public class TavaratPanel extends JPanel {
     /**
      * Asettaa paneliin JButtonit jokaiselle itemille
      *
-     * @param tiedot
+     * @param toiminnot
      */
-    public void listaa(Toiminnot tiedot) {
+    public void listaa(Toiminnot toiminnot) {
         JLabel otsikko = new JLabel("Items in your inventory");
         otsikko.setForeground(Color.white);
         this.add(otsikko);
@@ -43,7 +43,7 @@ public class TavaratPanel extends JPanel {
 
         for (String tavara : tavarat.getTavarat()) {
             JButton t = new JButton(tavara);
-            t.addActionListener(new ItemListListener(tiedot, tavara));
+            t.addActionListener(new ItemListListener(toiminnot, tavara));
             t.setBackground(Color.black);
             t.setForeground(Color.white);
             this.add(t);

@@ -1,6 +1,5 @@
 package Kayttoliittyma;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -12,16 +11,15 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Container container;
-    private Toiminnot tiedot;
+    private Toiminnot toiminnot;
 
     /**
      * Luo uuden käyttöliittymän
      *
-     * @param tiedot
+     * @param toiminnot
      */
-    public Kayttoliittyma(Toiminnot tiedot) {
-        this.tiedot = tiedot;
+    public Kayttoliittyma(Toiminnot toiminnot) {
+        this.toiminnot = toiminnot;
     }
 
     @Override
@@ -41,7 +39,7 @@ public class Kayttoliittyma implements Runnable {
      * Kutsuu Toiminnot-luokan metodia luomaan pelin ensimmäisen alueen
      */
     public void lataaPeli() {
-        this.tiedot.lataaUusiPeli(frame.getContentPane());
+        this.toiminnot.lataaUusiPeli(frame.getContentPane());
     }
 
     /**
@@ -50,7 +48,7 @@ public class Kayttoliittyma implements Runnable {
      * @param oikea, oikea = true, false = vasen
      */
     public void kaanny(boolean oikea) {
-        tiedot.kaanny(oikea);
+        toiminnot.kaanny(oikea);
     }
 
     /**
@@ -58,6 +56,6 @@ public class Kayttoliittyma implements Runnable {
      * mahdollista
      */
     public void liikuEteenpain() {
-        this.tiedot.seuraavaRuutu();
+        this.toiminnot.seuraavaRuutu();
     }
 }

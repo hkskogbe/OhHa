@@ -39,15 +39,24 @@ public class Tiedot {
     public void setSuunta(Suunta suunta) {
         this.suunta = suunta;
     }
-
+  /**
+     *
+     * @return Palauttaa tämänhetkisen ruudun
+     */
     public Ruutu getRuutu() {
         return ruutu;
     }
-
+/**
+     *
+     * @return Palauttaa nykyisen sijainnin
+     */
     public Sijainti getSijainti() {
         return sijainti;
     }
-
+   /**
+     *
+     * @return Palauttaa tämänhetkisen suunnan
+     */
     public Suunta getSuunta() {
         return suunta;
     }

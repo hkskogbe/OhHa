@@ -1,0 +1,66 @@
+﻿Testausdokumentaatio
+
+
+Mitä on jätetty testaamatta Junit-testeillä?
+
+
+Luokka: KayttoliittymanGrafiikka
+Mitä ei testattu JUnit-testeillä:
+	- Luokan luomien Jbuttonien ”oikeellisuutta” oli tehokkaampi testata manuaalisesti
+	- Siirtymistä valikkonäkymään oli vaikeaa testata mitenkään järkevästi, testattiin manuaalisesti.
+
+
+Luokka: Toiminnot
+Mitä ei testattu Junit-testeillä:
+	- Pelin lataamismetodien testaaminen jätettiin pois, sillä pelin aloitusruudun rakenne oli jatkuvasti muutoksen kohteena, minkä lisäksi se tuli käytännössä testattua joka kerta ohjelmaa ajettaessa
+	- Päivitykseen tarkoitettuja metodeja ei testattu kuin käsin
+
+
+Luokka: Tiedot
+Mitä ei testattu Junit-testeillä:
+	- Luokan metodit pelkkiä gettereitä sekä settereitä, jätettiin testaamatta
+
+
+Luokka: KlikattavienHiiriKuuntelija
+Mitä ei testattu Junit-testeillä:
+	- Toisin kuin muilla kuuntelija-luokilla, KlikattavienHiiriKuuntelijan määrittelemä klikattava alue olisi ollut mielekästä testata, mutta vaikeahkon toteutuksensa vuoksi tämä testattiin käsin
+
+
+Luokka: Sijainti (sisältää sekä SijaintiA1 sekä SijaintiA2 testaamisen) 
+Mitä ei testattu Junit-testeillä:
+	- Luokkien toiminnallisuutta ei testattu Junit-testeillä, sillä niiden toiminnallisuus muuttui jatkuvasti. Luokat pitävät lähinnä sisällään tietoa näkymien teksteistä sekä miten toimia minkäkin arvon ollessa true tai false, ja tämä oli tehokkainta testata käsin.
+	- Sijainti-luokkien toiminnot tulivat myös testatuiksi muiden luokkien testeissä.
+
+
+Luokka: Tavarat
+Mitä ei testattu Junit-testeillä:
+	- Luokkaa ei testattu Junit-testeillä, sillä toistaiseksi luokan sisältö on vain pitää sisällään ArrayList.
+
+
+Luokka: TavaratPanel 
+Mitä ei testattu Junit-testeillä:
+	- Luokka extendaa Jpanelia, ja luokan toiminto on yksinkertaistaa käyttöliittymän rakennetta.
+	- Luokassa olisi voinut testata listaa-metodin toimivuuden, mutta testien kirjoittaminen olisi ollut suhteellisen vaikeaa niin yksinkertaiselle toiminnolle.
+
+
+Luokka: Lataaja
+Mitä ei testattu Junit-testeillä:
+	- Ei testattu ladattavan tiedoston sisällön oikeellisuutta, sillä en osaa toteuttaa testausta kyseiselle asialle. Testattiin kuitenkin käsin.
+
+
+Luokka: LatausPanel
+Mitä ei testattu Junit-testeillä:
+	- Listaa-metodi jätettiin testaamatta, sillä sen toiminta riippuu täysin kansiosta, josta tallennuksia luetaan. Testattiin käsin.
+
+
+Luokka: TallennusPanel
+Mitä ei testattu Junit-testeillä:
+	- Vastaavasti kuin LatausPanelissa, listaa-metodi testattiin käsin.
+
+
+Luokka: Tallentaja
+Mitä ei testattu Junit-testeillä:
+	- Tiedostoonkirjoittamisen oikeellisuus testattiin käsin
+
+
+Jbuttoneihin liittyviä kuuntelijoita ei myöskään testattu, sillä niiden toiminnot olivat vain yksinkertaisia metodikutsuja.

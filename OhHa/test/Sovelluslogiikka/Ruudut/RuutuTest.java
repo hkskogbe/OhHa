@@ -1,17 +1,14 @@
 package Sovelluslogiikka.Ruudut;
 
 
-import Sovelluslogiikka.Ruudut.Nakyma;
-import Sovelluslogiikka.Ruudut.Ruutu;
 import Sovelluslogiikka.Suunta;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class RuutuTest {
 

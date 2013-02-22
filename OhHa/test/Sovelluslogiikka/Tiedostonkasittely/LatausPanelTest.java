@@ -36,8 +36,7 @@ public class LatausPanelTest {
             testipanel = new LatausPanel("huono sijainti");
         } catch (Exception e) {
             new AssertionError(testipanel);
-            assertTrue(false);
+            fail("Ei kuuluisi heittää exceptionia");
         }
-        assertTrue(true);
     }
 }

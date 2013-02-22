@@ -24,10 +24,7 @@ public class Tallentaja {
      * @param Tallennustiedoston nimi
      */
     public Tallentaja(String save) {
-        if (kirjoitusMuotoOnOikein(save)) {
-            this.save = save;
-        }
-            this.save = null;
+        this.save = save;
     }
 
     /**
@@ -46,6 +43,7 @@ public class Tallentaja {
 
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
         String kansio = new File(url.toURI()).getParent();
+
 
         this.kirjoittaja = new FileWriter(kansio + this.save);
         kirjoittaja.write(suunta.toString() + "\n");
@@ -73,6 +71,10 @@ public class Tallentaja {
      * @return boolean, onko kirjoitusmuoto oikein
      */
     boolean kirjoitusMuotoOnOikein(String sana) {
+
+        int pisteenindeksi = sana.indexOf(".");
+
+        sana = sana.substring(0, pisteenindeksi);
 
         if (sana.matches("[0-9a-zA-Z]+")) {
             return true;

@@ -16,7 +16,7 @@ import org.junit.Test;
 
 /**
  *
- * @author hese
+ *
  */
 public class KayttoliittymanGrafiikkaTest {
 
@@ -53,8 +53,14 @@ public class KayttoliittymanGrafiikkaTest {
 
     @Test
     public void itemIkkunaDisableeButtonitOikein() {
-        x.itemValikko(i,c);
+        x.itemValikko(i, c);
         assertFalse(x.getLataaButton().isEnabled());
+    }
+
+    @Test
+    public void latausValikkoEiDisableeLataaButtonia() {
+        x.latausValikko(t.getTiedot().getTallennuskansio(), c);
+        assertTrue(x.getLataaButton().isEnabled());
     }
 
     @Test
@@ -64,15 +70,15 @@ public class KayttoliittymanGrafiikkaTest {
 
     @Test
     public void itemIkkunaPoistaaNappuloidenDisableuksen() {
-        x.itemValikko(i,c);
-        x.itemValikko(i,c);
+        x.itemValikko(i, c);
+        x.itemValikko(i, c);
         assertTrue(x.getLataaButton().isEnabled());
     }
 
     @Test
     public void alussaYlaPalkkiTyhjana() {
         x.haeUI(new JPanel());
-        String w = x.getYlapalkki().getText();
+        String w = x.getYlaPalkinText();
         assertEquals("", w.trim());
     }
 
@@ -82,5 +88,31 @@ public class KayttoliittymanGrafiikkaTest {
         x.naytaTeksti("Foo!");
         String w = x.getYlaPalkinText().trim();
         assertEquals("Foo!", w);
+    }
+    
+    @Test
+    public void virheellinenLatausvalikonTiedostopolkuEiKaadaOhjelmaa() {
+        try {
+            x.latausValikko("Eihän tälläistä sijaintia voi olla", c);
+        } catch (Exception e) {
+            fail("Ei saisi heittää exceptionia");
+        }
+    }
+    
+    @Test
+    public void virheellinenSijaintiLatausValikkoonMennessäEiIlmoitaVirheestaKayttajalleVaanPiilottaaVirheen() {
+        x.latausValikko("Vihrrrllinen tiedostopolku", c);
+        String w = x.getYlaPalkinText();
+        if (!w.trim().isEmpty()) {
+            fail("Yläpalkin tekstin kuuluisi olla tyhjä latausnäkymässä");
+        }
+    }
+    @Test
+    public void virheellinenSijaintiTallennusValikkoonMennessäEiIlmoitaVirheestaKayttajalleVaanPiilottaaVirheen() {
+        x.tallennusValikko("Vihrrrllinen tiedostopolku", c);
+        String w = x.getYlaPalkinText();
+        if (!w.trim().isEmpty()) {
+            fail("Yläpalkin tekstin kuuluisi olla tyhjä tallennusnäkymässä");
+        }
     }
 }
