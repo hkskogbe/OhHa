@@ -19,6 +19,7 @@ public class Tiedot {
     public Tiedot() {
         this.tallennusKansio = "/Tallennukset/";
     }
+
     /**
      * Palauttaa kansion, jossa tallennukset sijaitsevat.
      *
@@ -28,32 +29,50 @@ public class Tiedot {
         return this.tallennusKansio;
     }
 
+    /**
+     * Asettaa ruuduksi parametrina annettavan ruudun
+     *
+     * @param ruutu
+     */
     public void setRuutu(Ruutu ruutu) {
         this.ruutu = ruutu;
     }
 
+    /**
+     * Asettaa sijainniksi parametrina annettavan sijainnin
+     *
+     * @param sijainti
+     */
     public void setSijainti(Sijainti sijainti) {
         this.sijainti = sijainti;
     }
 
+    /**
+     * Asetaa suunnaksi parametrina annettavan suunnan
+     *
+     * @param suunta
+     */
     public void setSuunta(Suunta suunta) {
         this.suunta = suunta;
     }
-  /**
+
+    /**
      *
      * @return Palauttaa tämänhetkisen ruudun
      */
     public Ruutu getRuutu() {
         return ruutu;
     }
-/**
+
+    /**
      *
      * @return Palauttaa nykyisen sijainnin
      */
     public Sijainti getSijainti() {
         return sijainti;
     }
-   /**
+
+    /**
      *
      * @return Palauttaa tämänhetkisen suunnan
      */
@@ -61,13 +80,21 @@ public class Tiedot {
         return suunta;
     }
 
+    /**
+     * Palauttaa pelihahmon tämänhetkiset tavarat
+     *
+     * @return tavarat
+     */
     public Tavarat getTavarat() {
         return tavarat;
     }
 
+    /**
+     * Asettaa pelihahmolle parametrina annetut tavarat.
+     *
+     * @param tavarat
+     */
     public void setTavarat(Tavarat tavarat) {
         this.tavarat = tavarat;
     }
-    
-    
 }

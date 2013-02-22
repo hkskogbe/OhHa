@@ -28,7 +28,6 @@ public class Toiminnot {
     private Tallennus tallennus;
     private Lataaja lataaja;
     private Tallentaja tallentaja;
-
     private Container container;
     private CardLayout cardlayout;
     private JPanel jpanel;
@@ -174,7 +173,7 @@ public class Toiminnot {
      */
     public void paivita() {
         Ruutu ruutu = tiedot.getSijainti().getRuutu();
-        
+
         this.tiedot.setRuutu(ruutu);
 
         jpanel = new JPanel(cardlayout);
@@ -212,18 +211,6 @@ public class Toiminnot {
     public void paivitaButtonit() {
         this.kayttiksenGrafiikka.paivitaButtonit(this.onSeuraavaRuutu(), tiedot.getRuutu(), tiedot.getSuunta());
     }
-
-
-    /**
-     * Asettaa pelille sijainniksi parametreina saatavan uuden sijainnin
-     *
-     * @param uusiSijainti
-     * @param suunta
-     */
-//    public void setSijainti(Sijainti uusiSijainti, Suunta suunta) {
-//        this.sijainti = uusiSijainti;
-//        this.suunta = suunta;
-//    }
 
     /**
      * Käyttää tämänhetkisen sijainnin tutki-metodia tämänhetkiselle suunnalle
@@ -310,19 +297,12 @@ public class Toiminnot {
 
     /**
      * Tieto siitä, ollaanko nyt valikossa.
+     *
      * @return Valikkonäkymä, ollaanko nyt valikkonäkymässä
      */
     public boolean valikkoNakyma() {
         return valikkoNakymassa;
     }
-
-    /**
-     *
-     * @return Palauttaa Tavarat-olion nyt käytössä olevista tavaroista
-     */
-//    public Tavarat getTavarat() {
-//        return tavarat;
-//    }
 
     /**
      * Siirtää tallennusvalikkoon
@@ -331,11 +311,11 @@ public class Toiminnot {
         this.kayttiksenGrafiikka.tallennusValikko(this.tiedot.getTallennuskansio(), container);
     }
 
-    
-//    public String getTallennusKansio() {
-//        return tallennusKansio;
-//    }
-
+    /**
+     * Välittää käskyn ruudulla tapahtuvasta klikkauksesta Sijainnille.
+     *
+     * @param k
+     */
     public void klikkaa(Klikattava k) {
         this.tiedot.getSijainti().klikkaa(tiedot.getTavarat(), k);
     }
