@@ -54,3 +54,5 @@ Lataaminen/tallentaminen toimii .jarissa, ei Netbeansissa :D, 2-3h
 21.2.
 Toiminnot-luokka korvaa Tiedot-luokan ylim‰‰r‰isi‰ toimintoja, 2h
 
+22-23.2.
+Koodin siistimist‰ hieman, luokkakaavioiden p‰ivitt‰mist‰, testausdokumentaatio, aihem‰‰rittelylle jatkoa, 4-5h

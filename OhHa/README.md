@@ -1,6 +1,0 @@
-OhHa
-====
-
-Readme
-
-uusi lisäys

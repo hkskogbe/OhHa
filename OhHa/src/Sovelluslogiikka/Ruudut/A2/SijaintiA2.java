@@ -98,7 +98,13 @@ public class SijaintiA2 implements Sijainti {
     }
 
     @Override
-    public void kaytaItem(Suunta suunta, String item) {
-        tiedot.naytaTeksti("There's a time and place for everything, but not now!");
+    public void kaytaItem(Tavarat tavarat, Suunta suunta, String item) {
+
+        if (tavarat.getTavarat().size() == 19) {
+            tiedot.naytaTeksti("Unlockasit juuri melko salaisen onnitteluviestin: Kiitos pelaamisesta");
+        } else {
+            tiedot.naytaTeksti("There's a time and place for everything, but not now!");
+        }
+
     }
 }

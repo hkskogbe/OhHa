@@ -125,12 +125,25 @@ public class SijaintiA1 implements Sijainti {
     public void klikkaa(Tavarat tavarat, Klikattava k) {
         if (k.getNimi().equals("wasd")) {
             if (tavarat.getTavarat().contains("Uusi tavara")) {
-                toiminnot.naytaTeksti("Repussasi oleva tavara monistui yllättäen");
-                toiminnot.lisaaItemReppuun("Uusi tavara");
+                int i = 0;
+
+                for (String s : tavarat.getTavarat()) {
+                    if (s.equals("Uusi tavara")) {
+                        i++;
+                    }
+                }
+
+                if (i > 18) {
+                    toiminnot.naytaTeksti("Nyt alkaa olla kyllä liikaa tavaroita repussa... Tavara ei enää monistunutkaan!");
+                } else {
+                    toiminnot.naytaTeksti("Repussasi oleva tavara monistui yllättäen");
+                    toiminnot.lisaaItemReppuun("Uusi tavara");
+                }
+
             } else {
                 toiminnot.naytaTeksti("Reppuusi ilmestyi uusi tavara!");
                 toiminnot.lisaaItemReppuun("Uusi tavara");
-            
+
             }
         }
         if (k.getNimi().equals("a1switch")) {
@@ -148,7 +161,7 @@ public class SijaintiA1 implements Sijainti {
     }
 
     @Override
-    public void kaytaItem(Suunta suunta, String item) {
+    public void kaytaItem(Tavarat tavarat, Suunta suunta, String item) {
         if (item.equals("jotain") && suunta == Suunta.LANSI) {
         } else {
             toiminnot.naytaTeksti("There's a time and place for everything, but not now!");

@@ -51,7 +51,9 @@ public interface Sijainti {
     /**
      * Suorittaa parametrina saatavan tavaran pohjalta jonkin toiminnon
      *
-     * @param Tavara, jota halutaan käyttää
+     * @param tavarat, kaikki pelaajan tavarat
+     * @param suunta
+     * @param item, tavara jota halutaan käyttää
      */
-    public void kaytaItem(Suunta suunta, String item);
+    public void kaytaItem(Tavarat tavarat, Suunta suunta, String item);
 }

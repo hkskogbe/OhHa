@@ -29,4 +29,4 @@ Mitä ohjelmaan oli vielä tarkoituksena lisätä, mutta ajan sun muun puutteess
 - Musiikkia/ääniä
 - Grafiikkaa (toistaiseksi vielä concept art -tasolla)
 - Tarina!
-- Laajentaa ohjelman muokattavuutta esimerkiksi sillä tavoin, että olisi mahdollista helposti liittää erillisiä puzzleja esimerkiksi Näkymä-luokan kautta ohjelmaan
+- Laajentaa ohjelman muokattavuutta esimerkiksi sillä tavoin, että olisi mahdollista helposti liittää erillisiä puzzleja esimerkiksi Näkymä-luokan kautta ohjelmaan. Samalla tavalla saisi esimerkiksi toimimaan joidenkin kohteiden tarkastelemisen lähempää ottamalla "zoomattu" versio jostakin kuvasta ja asettamalla se näkymäksi.

@@ -278,7 +278,7 @@ public class Toiminnot {
      */
     public void kaytaItem(String item) {
         this.itemit();
-        this.tiedot.getSijainti().kaytaItem(tiedot.getSuunta(), item);
+        this.tiedot.getSijainti().kaytaItem(tiedot.getTavarat(), tiedot.getSuunta(), item);
     }
 
     /**
